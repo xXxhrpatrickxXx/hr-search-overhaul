@@ -1,0 +1,1 @@
+Overhauling search templates to reduce clutter, fix bugs and improve reusability.
