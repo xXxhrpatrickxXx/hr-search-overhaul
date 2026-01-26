@@ -1,7 +1,7 @@
 {# text text_sorting_title = "Sort by" #}
 {# text text_sorting_title__Danish = "Sorter efter" #}
 {# text text_sorting_title__Swedish = "Sortera efter" #}
-{# text text_sorting_title__Dutch = "sorteer op" #}
+{# text text_sorting_title__Dutch = "Sorteer op" #}
 {# text text_sorting_title__Norwegian = "Sortere etter" #}
 {# text text_sorting_title__Finnish = "Järjestä" #}
 {# text text_sorting_title__German = "Sortieren nach" #}
@@ -130,38 +130,19 @@
 				{% if filters.size > 0 %}
 					{% assign filters = filters | items %}
 					{% for filter in filters %}
-						{% if filter[0] == "extraData" or filter[0] == "extraDataList" %}
-							{% assign edfilters = filter[1] | items %}
-							{% for edfilter in edfilters %}
-								<li class="aw-filter__single-wrapper aw-filter__{{ filter[0] }}.{{ edfilter[0] }}-wrapper" data-filter="{{ filter[0] }}.{{ edfilter[0] }}">
-									<button class="aw-filter__heading" aria-label="{{ edfilter[1].title }}">
-										{{ edfilter[1].title }}
-										{% if edfilter[1].selectedOptionCount > 0 %}
-										<span class='hr-selected-filter-count'>{{ edfilter[1].selectedOptionCount }}</span>
-										{% elsif edfilter[1].isActive %}
-										<span class='hr-selected-filter-count'>1</span>
-										{% endif %}
-									</button>
-									<div class="aw-filter-dropdown-content" style="display: none;">
-										{{ edfilter[1] }}
-									</div>
-								</li>
-							{% endfor %}
-						{% else %}
-							<li class="aw-filter__single-wrapper aw-filter__{{ filter[0] }}-wrapper" data-filter="{{ filter[0] }}">
-								<button class="aw-filter__heading" aria-label="{{ filter[1].title }}">
-									{{ filter[1].title }}
-									{% if filter[1].selectedOptionCount > 0 %}
-									<span class='hr-selected-filter-count'>{{ filter[1].selectedOptionCount }}</span>
-									{% elsif filter[1].isActive %}
-									<span class='hr-selected-filter-count'>1</span>
-									{% endif %}
-								</button>
-								<div class="aw-filter-dropdown-content" style="display: none;">
-									{{ filter[1] }}
-								</div>
-							</li>
-						{% endif %}
+						<li class="aw-filter__single-wrapper aw-filter__{{ filter[0] }}-wrapper" data-filter="{{ filter[0] }}">
+							<button class="aw-filter__heading" aria-label="{{ filter[1].title }}">
+								{{ filter[1].title }}
+								{% if filter[1].selectedOptionCount > 0 %}
+								<span class='hr-selected-filter-count'>{{ filter[1].selectedOptionCount }}</span>
+								{% elsif filter[1].isActive %}
+								<span class='hr-selected-filter-count'>1</span>
+								{% endif %}
+							</button>
+							<div class="aw-filter-dropdown-content" style="display: none;">
+								{{ filter[1] }}
+							</div>
+						</li>
 					{% endfor %}
 				{% endif %}
 				{% if sorting.options.size > 0 %}
@@ -185,53 +166,30 @@
 			</ul>
 		</div>
 	{% endif %}
+
 	<div class="hr-filters-selected">
 		{% for filter in filters %}
-			{% if filter[0] == "extraData" or filter[0] == "extraDataList" %}
-				{% assign edfilters = filter[1] | items %}
-				{% for edfilter in edfilters %}
-					{% if edfilter[1].isActive %}
-						{% assign filters_selected = true %}
-					{% endif %}
-					{% for option in edfilter[1].options %}
-						{% if option.selected %}
-							<span class="hr-filter-selected-tag" data-query="{{ option.query }}" data-filter="{{ filter[0] }}.{{ edfilter[0] }}">
-													{{ edfilter[1].title }}:
-													{{ option.title }}
-													<button aria-label="{{ label_clear_filter }} {{ edfilter[1].title }}: {{ option.title }}" class="hr-filter-selected-tag-clear"></button>
-												</span>
-						{% endif %}
-					{% endfor %}
-				{% endfor %}
-			{% else %}
-				{% for option in filter[1].options %}
-					{% if option.selected %}
-						<span
-								class="hr-filter-selected-tag" data-query="{{ option.query }}" data-filter="{{ filter[0] }}">
-													{{ filter[1].title }}:
-													{{ option.title }}
-												<button aria-label="{{ label_clear_filter }} {{ filter[1].title }}: {{ option.title }}" class="hr-filter-selected-tag-clear"></button>
-											</span>
-					{% endif %}
-				{% endfor %}
-				{% if filter[1].isActive %}
-					{% assign filters_selected = true %}
+			{% for option in filter[1].options %}
+				{% if option.selected %}
+				<span class="hr-filter-selected-tag" data-query="{{ option.query }}" data-filter="{{ filter[0] }}">
+					{{ filter[1].title }}: {{ option.title }}
+					<button aria-label="{{ label_clear_filter }} {{ filter[1].title }}: {{ option.title }}" class="hr-filter-selected-tag-clear"></button>
+				</span>
 				{% endif %}
-				{% if filter[1].isRange and filter[1].isActive %}
-					<div class="hr-filter-selected-tag" data-query="{{ filter[0] }}:" data-filter="{{ filter[0] }}">
-						{{ filter[1].title }}:
-						{{ filter[1].selectedMin | floor }}
-						-
-						{{ filter[1].selectedMax | ceil }}
-						<button aria-label="{{ label_clear_filter }} {{ filter[1].title }}" class="hr-filter-selected-tag-clear"></button>
-					</div>
-				{% endif %}
+			{% endfor %}
+			{% if filter[1].isActive %}
+				{% assign filters_selected = true %}
+			{% endif %}
+			{% if filter[1].isRange and filter[1].isActive %}
+			<div class="hr-filter-selected-tag" data-query="{{ filter[0] }}:" data-filter="{{ filter[0] }}">
+				{{ filter[1].title }}: {{ filter[1].selectedMin | floor }}
+				- {{ filter[1].selectedMax | ceil }}
+				<button aria-label="{{ label_clear_filter }} {{ filter[1].title }}" class="hr-filter-selected-tag-clear"></button>
+			</div>
 			{% endif %}
 		{% endfor %}
 		{% if filters_selected %}
-			<button id="hr-filter-selected-tag-reset" title="{{ text_filters_selected_clear_button }}" class="hr-filter-selected-tag-reset-btn">
-				{{ text_filters_selected_clear_button }}
-			</button>
+			<button id="hr-filter-selected-tag-reset" title="{{ text_filters_selected_clear_button }}" class="hr-filter-selected-tag-reset-btn">{{ text_filters_selected_clear_button }}</button>
 		{% endif %}
 	</div>
 {% endcapture %}
