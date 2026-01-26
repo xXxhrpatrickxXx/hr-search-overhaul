@@ -49,6 +49,18 @@
 
 /*
 * ===================
+* CSS Resets
+* ===================
+*/
+
+.hr-overlay-search * {
+	padding-inline-start: 0;
+	margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+/*
+* ===================
 * Overlay General
 * ===================
 */
