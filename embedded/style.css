@@ -1034,6 +1034,7 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	cursor: grab;
 	cursor: -moz-grab;
 	cursor: -webkit-grab;
+	display: block;
 }
 
 .hr-overlay-search .hr-range-slider-text,
