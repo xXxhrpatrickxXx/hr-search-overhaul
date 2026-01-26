@@ -897,7 +897,7 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	margin: 0;
 	display: block;
 	position: relative;
-	padding-left: 24px;
+	padding-left: 0;
 }
 
 .hr-overlay-search .hr-filter-list li.selected > label,
@@ -990,7 +990,7 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	margin: 0;
 	display: block;
 	position: relative;
-	padding-left: 24px;
+	padding-left: 0;
 }
 
 .hr-overlay-search .hr-filter-dropdown,
