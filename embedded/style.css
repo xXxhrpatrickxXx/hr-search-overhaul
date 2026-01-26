@@ -162,11 +162,6 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	appearance: checkbox;
 }
 
-.hr-max-width-container {
-	max-width: {{ container_max_width }};
-	margin: 0px auto;
-}
-
 .hr-loading-indicator {
 	background-color: #474747;
 	z-index: 2147483644;
