@@ -6,7 +6,8 @@ import "querystring_storage";
 import "search_instance";
 import "search_redirects";
 
-if (ui_utility_vanilla.window_size().width <= 992) {
+var ui_utility = ui_utility_vanilla;
+if (ui_utility.window_size().width <= 992) {
 	// Don't activate on mobile
 	return;
 }
@@ -14,9 +15,9 @@ if (ui_utility_vanilla.window_size().width <= 992) {
 /* text */ var trigger_selector = "input[type='search']";
 /* text */ var placement_selector = "#content";
 // Preselected_filters examples: isOnSale:true - hierarchies:Clothing$Accessories$
-/* text */ var preselected_filters = "";
+/* text */ var preselected_filters = '';
 // Provided close btn requires a element from the customer that we can use as a close button
-/* text */ var provided_close_btn = "";
+/* text */ var provided_close_btn = '';
 /* number */ var search_interval = 100;
 /* boolean */ var close_on_backdrop_click = true;
 
@@ -32,7 +33,7 @@ preselected_filters = preselected_filters ? preselected_filters.split(",") : [];
 var overlay_offsetY = 0;
 var placement_query = null;
 
-if (placement_selector != "") {
+if (placement_selector != '') {
 	placement_query = document.querySelector(placement_selector);
 }
 
@@ -95,7 +96,7 @@ function activate() {
 	overlay = ui_overlay_vanilla.create({
 		'class': "hr-overlay-search",
 		show: function(overlay) {
-			ui_utility_vanilla.show(overlay);
+			ui_utility.show(overlay);
 		}
 	});
 	
@@ -115,16 +116,16 @@ function activate() {
 	
 	searcher.initial_render(function(template) {
 		searcher.return_filters = true;
-		ui_utility_vanilla.hide(loading_indicator)
+		ui_utility.hide(loading_indicator)
 		overlay.appendChild(template());
-		ui_utility_vanilla.fix_links(overlay, "ps");
+		ui_utility.fix_links(overlay, "ps");
 		handle_live_update();
 		handle_skip_content();
 		triggers.forEach(function(trigger) {
 			add_skippable_button(trigger);
 		});
 		
-		var debounced_load_more = ui_utility_vanilla.debounce(function(new_search_term) {
+		var debounced_load_more = ui_utility.debounce(function(new_search_term) {
 			if (searcher.search_term != new_search_term) {
 				searcher.search_term = new_search_term;
 				load_more_results(false);
@@ -176,7 +177,7 @@ function activate() {
 		
 		// Restore state
 		var first_trigger_input = Array.from(triggers).find(trigger => trigger.tagName === "INPUT");
-		var saved_search_term = storage.get_or_default("search_term", first_trigger_input ? first_trigger_input.value : "");
+		var saved_search_term = storage.get_or_default("search_term", first_trigger_input ? first_trigger_input.value : '');
 		if (saved_search_term.length > 0) {
 			searcher.search_term = saved_search_term;
 			triggers[0].value = saved_search_term;
@@ -202,8 +203,8 @@ function activate() {
 		
 		// Use our close button unless they provide a close button
 		var hr_close = overlay.querySelector(".hr-close button.hr-close-btn");
-		if (provided_close_btn != "") {
-			ui_utility_vanilla.hide(hr_close);
+		if (provided_close_btn != '') {
+			ui_utility.hide(hr_close);
 			hr_close = document.querySelector(provided_close_btn);
 		}
 		
@@ -232,7 +233,7 @@ function activate() {
 	});
 	
 	function load_more_results(append, callback) {
-		ui_utility_vanilla.show(loading_indicator);
+		ui_utility.show(loading_indicator);
 		
 		if (!append) {
 			var redirects_container = overlay.querySelector(".hr-redirects-container");
@@ -240,9 +241,9 @@ function activate() {
 			if (redirect) {
 				redirects_container.querySelector(".hr-redirect-link").href = redirect.url;
 				redirects_container.querySelector(".hr-redirect-title").textContent = redirect.title;
-				ui_utility_vanilla.show(redirects_container);
+				ui_utility.show(redirects_container);
 			} else {
-				ui_utility_vanilla.hide(redirects_container)
+				ui_utility.hide(redirects_container)
 			}
 		}
 		
@@ -277,7 +278,7 @@ function activate() {
 				overlay.append(results);
 				var filters = overlay.querySelectorAll(".hr-filters .aw-filter__single-wrapper");
 				filters.forEach(function(filter) {
-					ui_utility_vanilla.register_filter(filter, function() {
+					ui_utility.register_filter(filter, function() {
 						load_more_results(false);
 					}, searcher, {rangeSliderDecimals: 0});
 				});
@@ -334,7 +335,7 @@ function activate() {
 				});
 				
 				var last_y_pos = 0;
-				overlay.querySelector(".hr-results").addEventListener('scroll', ui_utility_vanilla.throttle(function() {
+				overlay.querySelector(".hr-results").addEventListener('scroll', ui_utility.throttle(function() {
 					if (closed) {
 						return;
 					}
@@ -353,13 +354,13 @@ function activate() {
 				triggers[0].focus();
 			}
 			
-			ui_utility_vanilla.fix_links(overlay, "ps");
+			ui_utility.fix_links(overlay, "ps");
 			handle_live_update();
 			handle_skip_content();
 			triggers.forEach(function(trigger) {
 				add_skippable_button(trigger);
 			});
-			ui_utility_vanilla.hide(loading_indicator);
+			ui_utility.hide(loading_indicator);
 			if (typeof (callback) == 'function') {
 				callback();
 			}
@@ -375,17 +376,17 @@ function activate() {
 				trigger.blur();
 			});
 			
-			if (provided_close_btn != "") {
-				ui_utility_vanilla.hide(provided_close_btn);
+			if (provided_close_btn != '') {
+				ui_utility.hide(provided_close_btn);
 			}
 			overlay_active = false;
 			// Only reset to initial state if we already have a search term
 			if (searcher && searcher.search_term && searcher.search_term.length) {
-				ui_utility_vanilla.hide(overlay);
-				searcher.search_term = "";
+				ui_utility.hide(overlay);
+				searcher.search_term = '';
 				searcher.return_filters = false;
 				triggers.forEach(function(trigger) {
-					trigger.value = "";
+					trigger.value = '';
 				});
 				load_more_results(false, function() {
 					_close(true);
@@ -407,8 +408,8 @@ function activate() {
 	function open_overlay() {
 		document.querySelector("body")?.classList.add("hr-search-disable-scroll");
 		overlay.open();
-		if (provided_close_btn != "") {
-			ui_utility_vanilla.show(provided_close_btn);
+		if (provided_close_btn != '') {
+			ui_utility.show(provided_close_btn);
 		}
 		
 		document.addEventListener("keyup", function close_on_escape(e) {
@@ -548,7 +549,7 @@ function sortSizes(parent) {
 			return indexA - indexB;
 		});
 		var container = parent.querySelector(".aw-filter-tag-list");
-		container.innerHTML = "";
+		container.innerHTML = '';
 		labels.forEach(label => container.appendChild(label));
 	} catch (error) {
 		console.error("Error in sorting sizes:", error);
