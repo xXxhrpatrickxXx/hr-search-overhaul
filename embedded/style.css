@@ -25,6 +25,7 @@
 {# color range_filter_slider_border_color = "#ffffff" #}
 {# color range_filter_slider_background_color = "#232324" #}
 {# color range_filter_slider_draggable_background_color = {{ primary_shop_color }} #}
+{# color range_filter_text_color = {{ primary_shop_color }} #}
 
 /* Filter button */
 {# color filter_reset_button_color = "#4d4f5c" #}
@@ -811,7 +812,9 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 .hr-overlay-search .hr-filter-list,
 .hr-overlay-search .hr-filter-list ul,
 .hr-overlay-search .aw-filter-list,
-.hr-overlay-search .aw-filter-list ul {
+.hr-overlay-search .aw-filter-list ul,
+.hr-overlay-search .aw-filter-tag-list,
+.hr-overlay-search .aw-sorting-tag-list {
 	margin: 0;
 	padding: 0;
 	font-size: 14px;
@@ -984,13 +987,10 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 }
 
 .hr-overlay-search .hr-range-slider-text .hr-range-slider-text-from,
-.hr-overlay-search .aw-range-slider-text .aw-range-slider-text-from {
-	color: {{ range_filter_slider_draggable_background_color }};
-}
-
+.hr-overlay-search .aw-range-slider-text .aw-range-slider-text-from,
 .hr-overlay-search .hr-range-slider-text .hr-range-slider-text-to,
 .hr-overlay-search .aw-range-slider-text .aw-range-slider-text-to {
-	color: {{ range_filter_slider_draggable_background_color }};
+	color: {{ range_filter_text_color }};
 }
 
 .hr-overlay-search .hr-range-slider-text .hr-range-slider-text-clear-float,
