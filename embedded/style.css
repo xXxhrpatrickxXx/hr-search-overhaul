@@ -429,7 +429,7 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 }
 
 .hr-overlay-search .hr-results-container .hr-content-container ul {
-	padding: 15px 0px;
+	padding: 0 0px;
 	margin: 0;
 }
 
