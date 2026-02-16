@@ -503,6 +503,10 @@ body.hr-search-disable-scroll > .hr-overlay-search {
     overflow: hidden;   
     text-overflow: ellipsis;
 }
+
+.hr-search-overlay-content-link span .hr-search-content-hierarchy-divider:last-child {
+	display: none;	
+}
 {% endif %}
 
 /* Products */
