@@ -380,10 +380,10 @@
 										
 										<span class="hr-search-hierarchy-wrapper">
 											{% for level in ctnt.hierarchy %}
-												{% if level != "" and level != current_content_item.title %}
-												<span class="hr-grid-search-category-hierarchy-category">{{ level }}</span>
+												{% if level != "" and level != ctnt.title %}
+												<span class="hr-search-content-hierarchy-category">{{ level }}</span>
 												{% unless forloop.last %}
-												<span class="hr-grid-search-category-hierarchy-divider">›</span>
+												<span class="hr-search-content-hierarchy-divider">›</span>
 												{% endunless %}
 												{% endif %}
 											{% endfor %}
@@ -423,6 +423,15 @@
 						{% for ctnt in contentType[1].results %}
 							<div class="hr-search-overlay-content" data-type="{{ contentType[1].options.type }}">
 								<a class="hr-search-overlay-content-link" href="{{ ctnt.url }}">
+									{% assign reversed = ctnt.hierarchy | reverse %}
+									{% assign second_to_last = reversed[1] %}
+
+									{% if ctnt.hierarchy.size > 1 %}
+									<span class="hr-search-hierarchy-wrapper_horizontal">
+										<span class="hr-search-content-hierarchy-divider">&nbsp;{{ second_to_last }} | </span>
+									</span>
+									{% endif %}
+
 									{{ ctnt.title }}
 								</a>
 							</div>
