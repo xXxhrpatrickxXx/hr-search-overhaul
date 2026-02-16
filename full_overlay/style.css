@@ -56,6 +56,7 @@
 /* Content section  */
 {# Section content tab #}
 {# boolean show_category_content_hierarchy = false #}
+{# color content_icon_color = "#232324" #}
 {# boolean show_products_results_text = true #}
 
 
@@ -570,7 +571,11 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	right: 14px;
 	width: 18px;
 	height: 18px;
-	transform: translateY(-50%);
+	transform: translateY(-50%) rotate(180deg);
+}
+
+.hr-overlay-search .hr-search-overlay-content svg path { 
+	stroke: {{ content_icon_color }};	
 }
 
 {% if show_category_content_hierarchy %}
