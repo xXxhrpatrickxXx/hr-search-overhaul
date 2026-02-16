@@ -342,7 +342,6 @@
 					<div class='hr-products-search-header'>
 						<strong class="hr-highlight">{{ products.totalResults }}</strong> {{ text_search_products_title }}
 					</div>
-					{{ captured_filters }}
 					<div class="hr-products-text">
 						{{ result_subtitle | replace: "$query$", query | replace: "$totalResults$", products.totalResults | replace: "$contentType$", text_products }}
 					</div>
@@ -417,11 +416,11 @@
 			</div>
 
 			{% if suggestedProductStatus == 'ONLY_SUGGESTED' %}
-				<p class="hr-tab-subtitle">
+				<p class="hr-products-text">
 					{{ text_synonym_only_suggested }}
 				</p>
 			{% elsif suggestedProductStatus == 'MIXED' %}
-				<p class="hr-tab-subtitle">
+				<p class="hr-products-text">
 					{{ text_synonym_mixed }}
 				</p>
 			{% endif %}
