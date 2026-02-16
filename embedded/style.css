@@ -222,6 +222,10 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	background-color: {{ primary_shop_color }};
 	border-radius: 8px;
 	padding: 0.25em 0.5em;
+	animation-duration: var(--animate-duration);
+	animation-fill-mode: both;
+	animation-name: slideInDown;
+	transition: all 0.3s ease-in-out;
 }
 
 .hr-overlay-search .hr-search-plus-redirect {
