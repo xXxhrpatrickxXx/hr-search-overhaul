@@ -48,7 +48,7 @@
 
 /* Content section  */
 {# Section content tab #}
-{# boolean show_category_content_hierarchy = "false" #}
+{# boolean show_category_content_hierarchy = false #}
 
 /*
 * ===================
