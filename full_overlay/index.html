@@ -142,6 +142,76 @@
 {# text label_skip_to_input__German = "Springe zum Suchfeld" #}
 {# text label_skip_to_input__French = "Aller au champ de recherche" #}
 
+<!-- TEST STARTS -->
+{% assign product_list = initialContent[0].products | default: products.results %}
+
+{% capture render_products %}
+{% for product in product_list %}
+<div class="hr-search-overlay-product{% if product.isBanner %} hr-search-overlay-b{% endif %}">
+	{% comment %} Replace "BANNER_SIZE_NAME_PLACEHOLDER" with the size created for this design {% endcomment %}
+	{% assign banner_size_search_desktop = product.bannerImages.BANNER_SIZE_NAME_PLACEHOLDER.url %}
+	{% if product.isBanner %}
+	<div class="hr-search-overlay-product-link" style="width: 100%; max-width: 100%; height:100%; margin: 0; box-shadow: none;">
+		<a href="{{ product.url }}" class="hr-b-container">
+			<div class="hr-b-image" style="background-image:url({{ banner_size_search_desktop }})"></div>
+		</a>
+	</div>
+	{% else %}
+	<a class="hr-search-overlay-product-link" href="{{ product.url }}">
+		<div class="hr-col-img">
+			{% if product_sale_label %}
+			<div class="hr-search-overlay-labels">
+				{% if product.isOnSale %}
+				<div class="hr-search-overlay-label hr-search-overlay-label__sale">
+					-{{ product.oldPrice | minus: product.price | times: 100.0 | divided_by: product.oldPrice | round }}
+					%
+				</div>
+				{% endif %}
+			</div>
+			{% endif %}
+			<figure class="hr-search-overlay-product-thumbnail">
+				<img src="{{ product.imgUrl }}" class="hr-search-overlay-product-image" alt="{{ product.title }}" title="{{ product.title }}"/>
+			</figure>
+		</div>
+		<div class="hr-col-info">
+			<div class="hr-search-overlay-product-info">
+				<p class="hr-search-overlay-product-title">
+					{{ product.title }}
+				</p>
+				{% if show_product_description == true %}
+				<p class="hr-search-overlay-product-description">
+					{{ product.description }}
+				</p>
+				{% endif %}
+			</div>
+		</div>
+		<div class="hr-col-price">
+			<div class="hr-search-overlay-product-price-box">
+				{% if product.isOnSale %}
+				<p class="hr-search-overlay-product-price hr-search-overlay-product-price-old">
+					{{ product.oldPrice | priceWithCurrency: product.currency }}
+				</p>
+				<p class="hr-search-overlay-product-price hr-search-overlay-product-price-sale">
+					{{ product.price | priceWithCurrency: product.currency }}
+				</p>
+				{% else %}
+				<p class="hr-search-overlay-product-price hr-search-overlay-product-price-none">
+					&nbsp;
+				</p>
+				<p class="hr-search-overlay-product-price hr-search-overlay-product-price-normal">
+					{{ product.price | priceWithCurrency: product.currency }}
+				</p>
+				{% endif %}
+			</div>
+		</div>
+	</a>
+	{% endif %}
+</div>
+{% endfor %}
+{% endcapture %}
+
+<!-- TEST ENDS -->
+
 {% capture captured_filters %}
 {% if filters.size > 0 or sorting.options.size > 0 %}
 {% assign filters_selected = false %}
@@ -351,59 +421,7 @@
 			</h2>
 
 			<div class='hr-products-container' data-tab='product' data-content="product">
-				{% for product in initialContent[0].products %}
-				<div class="hr-search-overlay-product">
-					<a class="hr-search-overlay-product-link" href="{{ product.url }}">
-						<div class="hr-col-img">
-							{% if product_sale_label %}
-							<div class="hr-search-overlay-labels">
-								{% if product.isOnSale %}
-								<div class="hr-search-overlay-label hr-search-overlay-label__sale">
-									-{{ product.oldPrice | minus: product.price | times: 100.0 | divided_by: product.oldPrice | round }}
-									%
-								</div>
-								{% endif %}
-							</div>
-							{% endif %}
-							<figure class="hr-search-overlay-product-thumbnail">
-								<img src="{{ product.imgUrl }}" class="hr-search-overlay-product-image"
-									 alt="{{ product.title }}" title="{{ product.title }}">
-							</figure>
-						</div>
-						<div class="hr-col-info">
-							<div class="hr-search-overlay-product-info">
-								<p class="hr-search-overlay-product-title">
-									{{ product.title }}
-								</p>
-								{% if show_product_description == true %}
-								<p class="hr-search-overlay-product-description">
-									{{ product.description }}
-								</p>
-								{% endif %}
-							</div>
-						</div>
-						<div class="hr-col-price">
-							<div class="hr-search-overlay-product-price-box">
-								{% if product.isOnSale %}
-								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-old">
-									{{ product.oldPrice | priceWithCurrency: product.currency }}
-								</p>
-								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-sale">
-									{{ product.price | priceWithCurrency: product.currency }}
-								</p>
-								{% else %}
-								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-none">
-									&nbsp;
-								</p>
-								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-normal">
-									{{ product.price | priceWithCurrency: product.currency }}
-								</p>
-								{% endif %}
-							</div>
-						</div>
-					</a>
-				</div>
-				{% endfor %}
+				{{ render_products }}
 			</div>
 
 			{% elsif initRender %}
@@ -429,71 +447,9 @@
 
 			<!-- Products -->
 			<div class='hr-products-container' data-tab='product' data-content="product">
-				{% for product in products.results %}
-				<div class="hr-search-overlay-product{% if product.isBanner %} hr-search-overlay-b{% endif %}">
-					{% comment %} Replace "BANNER_SIZE_NAME_PLACEHOLDER" with the size created for this design {% endcomment %}
-					{% assign banner_size_search_desktop = product.bannerImages.BANNER_SIZE_NAME_PLACEHOLDER.url %}
-					{% if product.isBanner %}
-					<div class="hr-search-overlay-product-link" style="width: 100%; max-width: 100%; height:100%; margin: 0; box-shadow: none;">
-						<a href="{{ product.url }}" class="hr-b-container">
-							<div class="hr-b-image" style="background-image:url({{ banner_size_search_desktop }})"></div>
-						</a>
-					</div>
-					{% else %}
-					<a class="hr-search-overlay-product-link" href="{{ product.url }}">
-						<div class="hr-col-img">
-							{% if product_sale_label %}
-							<div class="hr-search-overlay-labels">
-								{% if product.isOnSale %}
-								<div class="hr-search-overlay-label hr-search-overlay-label__sale">
-									-{{ product.oldPrice | minus: product.price | times: 100.0 | divided_by: product.oldPrice | round }}
-									%
-								</div>
-								{% endif %}
-							</div>
-							{% endif %}
-							<figure class="hr-search-overlay-product-thumbnail">
-								<img src="{{ product.imgUrl }}" class="hr-search-overlay-product-image"
-									 alt="{{ product.title }}" title="{{ product.title }}">
-							</figure>
-						</div>
-						<div class="hr-col-info">
-							<div class="hr-search-overlay-product-info">
-								<p class="hr-search-overlay-product-title">
-									{{ product.title }}
-								</p>
-								{% if show_product_description == true %}
-								<p class="hr-search-overlay-product-description">
-									{{ product.description }}
-								</p>
-								{% endif %}
-							</div>
-						</div>
-						<div class="hr-col-price">
-							<div class="hr-search-overlay-product-price-box">
-								{% if product.isOnSale %}
-								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-old">
-									{{ product.oldPrice | priceWithCurrency: product.currency }}
-								</p>
-								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-sale">
-									{{ product.price | priceWithCurrency: product.currency }}
-								</p>
-								{% else %}
-								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-none">
-									&nbsp;
-								</p>
-								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-normal">
-									{{ product.price | priceWithCurrency: product.currency }}
-								</p>
-								{% endif %}
-							</div>
-						</div>
-					</a>
-					{% endif %}
-				</div>
-				{% endfor %}
-				{% endif %}
+				{{ render_products }}
 			</div>
+			{% endif %}
 		</div>
 	</div>
 </div>
