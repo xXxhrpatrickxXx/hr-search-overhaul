@@ -234,18 +234,6 @@ function activate() {
 	function load_more_results(append, callback) {
 		ui_utility.show(loading_indicator);
 
-		if (!append) {
-			var redirects_container = overlay.querySelector(".hr-redirects-container");
-			var redirect = search_redirects.match(searcher.search_term, key);
-			if (redirect) {
-				redirects_container.querySelector(".hr-redirect-link").href = redirect.url;
-				redirects_container.querySelector(".hr-redirect-title").textContent = redirect.title;
-				ui_utility.show(redirects_container);
-			} else {
-				ui_utility.hide(redirects_container);
-			}
-		}
-
 		for (var engine in engine_options) {
 			searcher[engine + "_count"] = append && engine != "product" ? 0 : engine_options[engine].current_count;
 		}
@@ -275,6 +263,17 @@ function activate() {
 				document.querySelector(".hr-results").remove();
 				var results = template(".hr-results");
 				overlay.append(results);
+
+				var redirects_container = overlay.querySelector(".hr-redirects-container");
+				var redirect = search_redirects.match(searcher.search_term, key);
+				if (redirect) {
+					redirects_container.querySelector(".hr-redirect-link").setAttribute("href", redirect.url);
+					redirects_container.querySelector(".hr-redirect-title").textContent = redirect.title;
+					ui_utility.show(redirects_container);
+				} else {
+					ui_utility.hide(redirects_container);
+				}
+
 				var filters = overlay.querySelectorAll(".hr-filters .aw-filter__single-wrapper");
 				filters.forEach(function (filter) {
 					ui_utility.register_filter(
