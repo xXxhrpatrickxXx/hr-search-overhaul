@@ -921,6 +921,7 @@
 
 .hr-range-slider .hr-range-slider-handle,
 .aw-range-slider .aw-range-slider-handle {
+	display: block;
 	position: absolute;
 	top: -12.5px;
 	left: -15.5px;
