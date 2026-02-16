@@ -1247,46 +1247,6 @@ ul.aw-filter-list li.selected > ul,
 	}
 }
 
-@-webkit-keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	
-	to {
-		opacity: 1;
-	}
-}
-
-@-moz-keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	
-	to {
-		opacity: 1;
-	}
-}
-
-@-o-keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	
-	to {
-		opacity: 1;
-	}
-}
-
-@-ms-keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	
-	to {
-		opacity: 1;
-	}
-}
-
 .hr-fadeIn {
 	-webkit-animation-name: fadeIn;
 	animation-name: fadeIn;
@@ -1310,58 +1270,6 @@ ul.aw-filter-list li.selected > ul,
 	}
 }
 
-@-webkit-keyframes slideInDown {
-	from {
-		-webkit-transform: translate3d(0, -100%, 0);
-		transform: translate3d(0, -100%, 0);
-		visibility: visible;
-	}
-	
-	to {
-		-webkit-transform: translate3d(0, 0, 0);
-		transform: translate3d(0, 0, 0);
-	}
-}
-
-@-moz-keyframes slideInDown {
-	from {
-		-webkit-transform: translate3d(0, -100%, 0);
-		transform: translate3d(0, -100%, 0);
-		visibility: visible;
-	}
-	
-	to {
-		-webkit-transform: translate3d(0, 0, 0);
-		transform: translate3d(0, 0, 0);
-	}
-}
-
-@-o-keyframes slideInDown {
-	from {
-		-webkit-transform: translate3d(0, -100%, 0);
-		transform: translate3d(0, -100%, 0);
-		visibility: visible;
-	}
-	
-	to {
-		-webkit-transform: translate3d(0, 0, 0);
-		transform: translate3d(0, 0, 0);
-	}
-}
-
-@-ms-keyframes slideInDown {
-	from {
-		-webkit-transform: translate3d(0, -100%, 0);
-		transform: translate3d(0, -100%, 0);
-		visibility: visible;
-	}
-	
-	to {
-		-webkit-transform: translate3d(0, 0, 0);
-		transform: translate3d(0, 0, 0);
-	}
-}
-
 .hr-slideInDown {
 	-webkit-animation-name: slideInDown;
 	animation-name: slideInDown;
@@ -1373,66 +1281,6 @@ ul.aw-filter-list li.selected > ul,
 
 /* Animation - Loading */
 @keyframes loading {
-	0% {
-		left: 0;
-		right: 100%;
-	}
-	50% {
-		left: 0;
-		right: 0;
-	}
-	100% {
-		left: 100%;
-		right: 0;
-	}
-}
-
-@-webkit-keyframes loading {
-	0% {
-		left: 0;
-		right: 100%;
-	}
-	50% {
-		left: 0;
-		right: 0;
-	}
-	100% {
-		left: 100%;
-		right: 0;
-	}
-}
-
-@-moz-keyframes loading {
-	0% {
-		left: 0;
-		right: 100%;
-	}
-	50% {
-		left: 0;
-		right: 0;
-	}
-	100% {
-		left: 100%;
-		right: 0;
-	}
-}
-
-@-o-keyframes loading {
-	0% {
-		left: 0;
-		right: 100%;
-	}
-	50% {
-		left: 0;
-		right: 0;
-	}
-	100% {
-		left: 100%;
-		right: 0;
-	}
-}
-
-@-ms-keyframes loading {
 	0% {
 		left: 0;
 		right: 100%;
