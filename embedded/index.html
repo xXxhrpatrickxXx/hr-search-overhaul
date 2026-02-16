@@ -271,9 +271,9 @@
 						<span class="hr-search-hierarchy-wrapper">
 							{% for level in ctnt.hierarchy %}
 							{% if level != "" and level != current_content_item.title %}
-							<span class="hr-grid-search-category-hierarchy-category">{{ level }}</span>
+							<span class="hr-search-content-hierarchy-category">{{ level }}</span>
 							{% unless forloop.last %}
-							<span class="hr-grid-search-category-hierarchy-divider">›</span>
+							<span class="hr-search-content-hierarchy-divider">›</span>
 							{% endunless %}
 							{% endif %}
 							{% endfor %}
