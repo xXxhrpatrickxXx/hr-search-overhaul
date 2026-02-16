@@ -57,6 +57,7 @@
 {# Section content tab #}
 {# boolean show_category_content_hierarchy = false #}
 {# color content_icon_color = "#232324" #}
+{# color content_hierarchy_text_color = "#74757b" #}
 {# boolean show_products_results_text = true #}
 
 
@@ -582,12 +583,12 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 .hr-overlay-search .hr-search-hierarchy-wrapper {
     display: block;
     font-size: 13px;
-    color: #74757b;
+    color: {{ content_hierarchy_text_color }};
     overflow: hidden;   
     text-overflow: ellipsis;
 }
 
-.hr-search-overlay-content-link span .hr-search-content-hierarchy-divider:last-child {
+.hr-overlay-search .hr-search-overlay-content-link .hr-search-content-hierarchy-divider:last-child {
 	display: none;	
 }
 {% endif %}
