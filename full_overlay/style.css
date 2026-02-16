@@ -588,7 +588,7 @@ body.hr-search-disable-scroll > .hr-overlay-search {
     text-overflow: ellipsis;
 }
 
-.hr-overlay-search .hr-search-overlay-content-link .hr-search-content-hierarchy-divider:last-child {
+.hr-overlay-search .hr-search-hierarchy-wrapper .hr-search-content-hierarchy-divider:last-child {
 	display: none;	
 }
 {% endif %}
