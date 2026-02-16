@@ -409,19 +409,10 @@
 
 			{% elsif initRender %}
 				<div class="hr-placeholder" data-loader="product">&nbsp;</div>
-			{% elsif products.totalResults <= 0 %}
-				<div class='hr-title'>
-					<div class='hr-products-search-header'>
-						<strong class="hr-highlight">{{ products.totalResults }}</strong> {{ text_search_products_title }}
-					</div>
-					<div class="hr-products-text">
-						{{ result_subtitle | replace: "$query$", query | replace: "$totalResults$", products.totalResults | replace: "$contentType$", text_products }}
-					</div>
-				</div>
 			{% else %}
 			<h2 class='hr-products-header'>{{ text_products_title }}</h2>
 	
-			<div class="hr-products-text" style="display: none;">
+			<div class="hr-products-text">
 				{{ result_subtitle | replace: "$query$", query | replace: "$totalResults$", products.totalResults | replace: "$contentType$", text_products }}
 			</div>
 
