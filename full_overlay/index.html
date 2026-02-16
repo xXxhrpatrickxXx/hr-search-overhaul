@@ -142,9 +142,7 @@
 {# text label_skip_to_input__German = "Springe zum Suchfeld" #}
 {# text label_skip_to_input__French = "Aller au champ de recherche" #}
 
-<!-- TEST STARTS -->
 {% assign product_list = initialContent[0].products | default: products.results %}
-
 {% capture render_products %}
 {% for product in product_list %}
 <div class="hr-search-overlay-product{% if product.isBanner %} hr-search-overlay-b{% endif %}">
@@ -209,8 +207,6 @@
 </div>
 {% endfor %}
 {% endcapture %}
-
-<!-- TEST ENDS -->
 
 {% capture captured_filters %}
 {% if filters.size > 0 or sorting.options.size > 0 %}
