@@ -88,10 +88,6 @@
 	margin-top: 232px;
 {% if fade_effects %}
 	animation: fadeIn ease .3s;
-	-webkit-animation: fadeIn ease .3s;
-	-moz-animation: fadeIn ease .3s;
-	-o-animation: fadeIn ease .3s;
-	-ms-animation: fadeIn ease .3s;
 {% endif %}
 	z-index: {{ overlay_z_index }};
 }
@@ -262,8 +258,6 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	background-color: {{ search_bar_background_color }};
 	border: {{ general_border_size }}px solid {{ general_border_color }};
 	border-radius: {{ general_border_radius }}px;
-	-webkit-border-radius: {{ general_border_radius }}px;
-	-moz-border-radius: {{ general_border_radius }}px;
 	z-index: 1;
 }
 
@@ -301,15 +295,10 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	background-color: #fff;
 	border: {{ general_border_size }}px solid {{ general_border_color }};
 	border-radius: {{ close_button_border_radius }};
-	-webkit-border-radius: {{ close_button_border_radius }};
-	-moz-border-radius: {{ close_button_border_radius }};
 	webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
 	transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
 	cursor: pointer;
 }
 
@@ -397,10 +386,6 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	flex-direction: row;
 {% if fade_effects %}
 	animation: fadeIn ease .8s;
-	-webkit-animation: fadeIn ease .8s;
-	-moz-animation: fadeIn ease .8s;
-	-o-animation: fadeIn ease .8s;
-	-ms-animation: fadeIn ease .8s;
 {% endif %}
 }
 
@@ -459,22 +444,14 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	background-color: #fff;
 	border: {{ general_border_size }}px solid {{ general_border_color }};
 	border-radius: {{ general_border_radius }}px;
-	-webkit-border-radius: {{ general_border_radius }}px;
-	-moz-border-radius: {{ general_border_radius }}px;
 	text-decoration: none;
 	transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
 	cursor: pointer;
 	z-index: 1;
 }
 
 .hr-overlay-search .hr-search-overlay-content:hover {
 	box-shadow: 0px 4px 12px rgba(0,0,0,.2);
-	-webkit-box-shadow: 0px 4px 12px rgba(0,0,0,.2);
-	-moz-box-shadow: 0px 4px 12px rgba(0,0,0,.2);
-	-o-box-shadow: 0px 4px 12px rgba(0,0,0,.2);
 }
 
 .hr-overlay-search .hr-search-overlay-content .hr-search-overlay-content-link {
@@ -502,10 +479,6 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	width: 18px;
 	height: 18px;
 	transform: translateY(-50%);
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
 }
 
 {% if show_category_content_hierarchy %}
@@ -560,10 +533,6 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	background-color: transparent;
 {% if fade_effects %}
 	animation: fadeIn ease .8s;
-	-webkit-animation: fadeIn ease .8s;
-	-moz-animation: fadeIn ease .8s;
-	-o-animation: fadeIn ease .8s;
-	-ms-animation: fadeIn ease .8s;
 {% endif %}
 	box-sizing: border-box;
 }
@@ -581,19 +550,11 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	background-color: {{ product_tile_background_color }};
 	border: {{ general_border_size }}px solid {{ general_border_color }};
 	border-radius: {{ general_border_radius }}px;
-	-webkit-border-radius: {{ general_border_radius }}px;
-	-moz-border-radius: {{ general_border_radius }}px;
 	transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
 }
 
 .hr-overlay-search .hr-search-overlay-product > .hr-search-overlay-product-link:hover {
 	box-shadow: 0px 4px 12px rgba(0,0,0,.2);
-	-webkit-box-shadow: 0px 4px 12px rgba(0,0,0,.2);
-	-moz-box-shadow: 0px 4px 12px rgba(0,0,0,.2);
-	-o-box-shadow: 0px 4px 12px rgba(0,0,0,.2);
 }
 
 .hr-overlay-search .hr-search-overlay-product .hr-search-overlay-labels,
@@ -615,8 +576,6 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	color: {{ general_text_color }};
 	text-transform: uppercase;
 	border-radius: 50%;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
 	width: 50px;
 	height: 50px;
 	clear: both;
@@ -639,8 +598,6 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 
 .hr-overlay-search .hr-search-overlay-product-image {
 	border-radius: {{ general_border_radius }}px;
-	-webkit-border-radius: {{ general_border_radius }}px;
-	-moz-border-radius: {{ general_border_radius }}px;
 	width: auto;
 	height: auto;
 	max-height: {{ product_image_height }}px;
@@ -763,13 +720,8 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	color: {{ notification_bubble_text_color }};
 	background-color: {{ notification_bubble_background_color }};
 	border-radius: 50%;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
 	min-width: 25px;
 	box-shadow: 0px 2px 8px rgba(0,0,0,.2);
-	-webkit-box-shadow: 0px 2px 8px rgba(0,0,0,.2);
-	-moz-box-shadow: 0px 2px 8px rgba(0,0,0,.2);
-	-o-box-shadow: 0px 2px 8px rgba(0,0,0,.2);
 	z-index: 15;
 }
 
@@ -789,8 +741,6 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	background: #fff;
 	border: {{ general_border_size }}px solid {{ general_border_color }};
 	border-radius: {{ general_border_radius }}px;
-	-webkit-border-radius: {{ general_border_radius }}px;
-	-moz-border-radius: {{ general_border_radius }}px;
 	box-sizing: border-box;
 }
 
@@ -806,8 +756,6 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	max-height: 300px;
 	border: {{ general_border_size }}px solid {{ general_border_color }};
 	border-radius: {{ general_border_radius }}px;
-	-webkit-border-radius: {{ general_border_radius }}px;
-	-moz-border-radius: {{ general_border_radius }}px;
 	overflow-y: auto;
 	z-index: 12;
 }
@@ -834,14 +782,7 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	right: 20px;
 	font-size: 20px;
 	transform: translateY(-50%) rotate(90deg);
-	-webkit-transform: translateY(-50%) rotate(90deg);
-	-moz-transform: translateY(-50%) rotate(90deg);
-	-ms-transform: translateY(-50%) rotate(90deg);
-	-o-transform: translateY(-50%) rotate(90deg);
 	transition: .2s ease;
-	-webkit-transition: .2s ease;
-	-moz-transition: .2s ease;
-	o-transition: .2s ease;
 }
 
 .hr-overlay-search .hr-filter__single-wrapper.active .hr-filter__heading:before,
@@ -849,10 +790,6 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 .hr-overlay-search .aw-filter__single-wrapper.active .aw-filter__heading:before,
 .hr-overlay-search .aw-filter__single-wrapper.active .aw-filter__heading:after {
 	transform: translateY(-50%) rotate(270deg);
-	-webkit-transform: translateY(-50%) rotate(270deg);
-	-moz-transform: translateY(-50%) rotate(270deg);
-	-ms-transform: translateY(-50%) rotate(270deg);
-	-o-transform: translateY(-50%) rotate(270deg);
 }
 
 
@@ -863,7 +800,6 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 
 .hr-overlay-search .hr-filter__heading.shown i,
 .hr-overlay-search .aw-filter__heading.shown i {
-	-webkit-transform: rotate(180deg);
 	transform: rotate(180deg);
 }
 
@@ -1031,12 +967,7 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	background-color: {{ range_filter_slider_draggable_background_color }};
 	border: 4px solid {{ range_filter_slider_border_color }};
 	border-radius: 50%;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
 	box-shadow: 0px 2px 8px rgba(0,0,0,.2);
-	-webkit-box-shadow: 0px 2px 8px rgba(0,0,0,.2);
-	-moz-box-shadow: 0px 2px 8px rgba(0,0,0,.2);
-	-o-box-shadow: 0px 2px 8px rgba(0,0,0,.2);
 	cursor: move;
 	cursor: grab;
 	cursor: -moz-grab;
@@ -1121,8 +1052,6 @@ ul.aw-filter-list li.selected > ul,
 	background: #ffffff;
 	border: {{ general_border_size }}px solid {{ general_border_color }};
 	border-radius: {{ general_border_radius }}px;
-	-webkit-border-radius: {{ general_border_radius }}px;
-	-moz-border-radius: {{ general_border_radius }}px;
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -1233,34 +1162,26 @@ ul.aw-filter-list li.selected > ul,
 }
 
 .hr-fadeIn {
-	-webkit-animation-name: fadeIn;
 	animation-name: fadeIn;
-	-webkit-animation-duration: var(--animate-duration);
 	animation-duration: var(--animate-duration);
-	-webkit-animation-fill-mode: both;
 	animation-fill-mode: both;
 }
 
 /* Animations - Sliding */
 @keyframes slideInDown {
 	from {
-		-webkit-transform: translate3d(0, -100%, 0);
 		transform: translate3d(0, -100%, 0);
 		visibility: visible;
 	}
 	
 	to {
-		-webkit-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
 	}
 }
 
 .hr-slideInDown {
-	-webkit-animation-name: slideInDown;
 	animation-name: slideInDown;
-	-webkit-animation-duration: var(--animate-duration);
 	animation-duration: var(--animate-duration);
-	-webkit-animation-fill-mode: both;
 	animation-fill-mode: both;
 }
 
