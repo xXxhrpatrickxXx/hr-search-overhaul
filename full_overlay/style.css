@@ -213,7 +213,7 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	display: flex;
 	flex-grow: 0;
 	flex-shrink: 0;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 	height: {{ header_height_px }}px;
@@ -226,13 +226,8 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 .hr-overlay-search .hr-header > div {
 	position: relative;
 	display: flex;
-	margin: 0 60px;
+	margin: 0 20px;
 	max-width: 100%;
-}
-
-.hr-overlay-search .hr-header > .hr-logo-container {
-	width: 20%;
-	flex-basis: 20%;
 }
 
 /* Header - Logo */
@@ -499,6 +494,7 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	display: flex;
 	flex-direction: column;
 	overflow: auto !important;
+	position: relative;
 }
 
 .hr-overlay-search .hr-results-container {
