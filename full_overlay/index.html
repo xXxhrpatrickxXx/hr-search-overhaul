@@ -143,75 +143,75 @@
 {# text label_skip_to_input__French = "Aller au champ de recherche" #}
 
 {% capture captured_filters %}
-	{% if filters.size > 0 or sorting.options.size > 0 %}
-		{% assign filters_selected = false %}
-		<div class="hr-filters">
-			<ul class="aw-full-search-results__filter-wrapper" role="list" aria-label="{{ label_filters }}">
-				{% if filters.size > 0 %}
-					{% assign filters = filters | items %}
-					{% for filter in filters %}
-						<li class="aw-filter__single-wrapper aw-filter__{{ filter[0] }}-wrapper" data-filter="{{ filter[0] }}">
-							<button class="aw-filter__heading" aria-label="{{ filter[1].title }}">
-								{{ filter[1].title }}
-								{% if filter[1].selectedOptionCount > 0 %}
-								<span class='hr-selected-filter-count'>{{ filter[1].selectedOptionCount }}</span>
-								{% elsif filter[1].isActive %}
-								<span class='hr-selected-filter-count'>1</span>
-								{% endif %}
-							</button>
-							<div class="aw-filter-dropdown-content" style="display: none;">
-								{{ filter[1] }}
-							</div>
-						</li>
-					{% endfor %}
-				{% endif %}
-				{% if sorting.options.size > 0 %}
-					<li class="aw-filter__single-wrapper aw-filter__sorting-wrapper" data-filter="sorting">
-						<button class="aw-filter__heading" aria-label="{{ text_sorting_title }}">
-							{{ text_sorting_title }}
-							<span class='hr-sorting-selected'>
-									{% for o in sorting.options %}
-										{% if o.selected %}
-											{% assign filters_selected = true %}
-											'{{ o.title }}'
-										{% endif %}
-									{% endfor %}
-								</span>
-						</button>
-						<div class="aw-filter-dropdown-content" style="display: none;">
-							{{ sorting.asTagList }}
-						</div>
-					</li>
-				{% endif %}
-			</ul>
-		</div>
-	{% endif %}
-
-	<div class="hr-filters-selected">
+{% if filters.size > 0 or sorting.options.size > 0 %}
+{% assign filters_selected = false %}
+<div class="hr-filters">
+	<ul class="aw-full-search-results__filter-wrapper" role="list" aria-label="{{ label_filters }}">
+		{% if filters.size > 0 %}
+		{% assign filters = filters | items %}
 		{% for filter in filters %}
-			{% for option in filter[1].options %}
-				{% if option.selected %}
-				<span class="hr-filter-selected-tag" data-query="{{ option.query }}" data-filter="{{ filter[0] }}">
-					{{ filter[1].title }}: {{ option.title }}
-					<button aria-label="{{ label_clear_filter }} {{ filter[1].title }}: {{ option.title }}" class="hr-filter-selected-tag-clear"></button>
-				</span>
+		<li class="aw-filter__single-wrapper aw-filter__{{ filter[0] }}-wrapper" data-filter="{{ filter[0] }}">
+			<button class="aw-filter__heading" aria-label="{{ filter[1].title }}">
+				{{ filter[1].title }}
+				{% if filter[1].selectedOptionCount > 0 %}
+				<span class='hr-selected-filter-count'>{{ filter[1].selectedOptionCount }}</span>
+				{% elsif filter[1].isActive %}
+				<span class='hr-selected-filter-count'>1</span>
 				{% endif %}
-			{% endfor %}
-			{% if filter[1].isActive %}
-				{% assign filters_selected = true %}
-			{% endif %}
-			{% if filter[1].isRange and filter[1].isActive %}
-			<div class="hr-filter-selected-tag" data-query="{{ filter[0] }}:" data-filter="{{ filter[0] }}">
-				{{ filter[1].title }}: {{ filter[1].selectedMin | floor }}
-				- {{ filter[1].selectedMax | ceil }}
-				<button aria-label="{{ label_clear_filter }} {{ filter[1].title }}" class="hr-filter-selected-tag-clear"></button>
+			</button>
+			<div class="aw-filter-dropdown-content" style="display: none;">
+				{{ filter[1] }}
 			</div>
-			{% endif %}
+		</li>
 		{% endfor %}
-		{% if filters_selected %}
-			<button id="hr-filter-selected-tag-reset" title="{{ text_filters_selected_clear_button }}" class="hr-filter-selected-tag-reset-btn">{{ text_filters_selected_clear_button }}</button>
 		{% endif %}
+		{% if sorting.options.size > 0 %}
+		<li class="aw-filter__single-wrapper aw-filter__sorting-wrapper" data-filter="sorting">
+			<button class="aw-filter__heading" aria-label="{{ text_sorting_title }}">
+				{{ text_sorting_title }}
+				<span class='hr-sorting-selected'>
+					{% for o in sorting.options %}
+					{% if o.selected %}
+					{% assign filters_selected = true %}
+					'{{ o.title }}'
+					{% endif %}
+					{% endfor %}
+				</span>
+			</button>
+			<div class="aw-filter-dropdown-content" style="display: none;">
+				{{ sorting.asTagList }}
+			</div>
+		</li>
+		{% endif %}
+	</ul>
+</div>
+{% endif %}
+
+<div class="hr-filters-selected">
+	{% for filter in filters %}
+	{% for option in filter[1].options %}
+	{% if option.selected %}
+	<span class="hr-filter-selected-tag" data-query="{{ option.query }}" data-filter="{{ filter[0] }}">
+		{{ filter[1].title }}: {{ option.title }}
+		<button aria-label="{{ label_clear_filter }} {{ filter[1].title }}: {{ option.title }}" class="hr-filter-selected-tag-clear"></button>
+	</span>
+	{% endif %}
+	{% endfor %}
+	{% if filter[1].isActive %}
+	{% assign filters_selected = true %}
+	{% endif %}
+	{% if filter[1].isRange and filter[1].isActive %}
+	<div class="hr-filter-selected-tag" data-query="{{ filter[0] }}:" data-filter="{{ filter[0] }}">
+		{{ filter[1].title }}: {{ filter[1].selectedMin | floor }}
+		- {{ filter[1].selectedMax | ceil }}
+		<button aria-label="{{ label_clear_filter }} {{ filter[1].title }}" class="hr-filter-selected-tag-clear"></button>
 	</div>
+	{% endif %}
+	{% endfor %}
+	{% if filters_selected %}
+	<button id="hr-filter-selected-tag-reset" title="{{ text_filters_selected_clear_button }}" class="hr-filter-selected-tag-reset-btn">{{ text_filters_selected_clear_button }}</button>
+	{% endif %}
+</div>
 {% endcapture %}
 
 {% if initRender %}
@@ -229,9 +229,9 @@
 				<span class="hr-btn-search" type="submit">
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" xml:space="preserve">
 						<path
-							fill="{{ button_icon_colors }}"
-							d="M23.6,22.4l-4.3-4.3C21,16.3,22,13.7,22,11c0-6.1-4.9-11-11-11S0,4.9,0,11s4.9,11,11,11c2.7,0,5.3-1,7.2-2.7
-						l4.3,4.3L23.6,22.4z M1.6,11c0-5.2,4.2-9.4,9.4-9.4c5.2,0,9.4,4.2,9.4,9.4c0,5.2-4.2,9.4-9.4,9.4C5.8,20.4,1.6,16.2,1.6,11z" />
+							  fill="{{ button_icon_colors }}"
+							  d="M23.6,22.4l-4.3-4.3C21,16.3,22,13.7,22,11c0-6.1-4.9-11-11-11S0,4.9,0,11s4.9,11,11,11c2.7,0,5.3-1,7.2-2.7
+								 l4.3,4.3L23.6,22.4z M1.6,11c0-5.2,4.2-9.4,9.4-9.4c5.2,0,9.4,4.2,9.4,9.4c0,5.2-4.2,9.4-9.4,9.4C5.8,20.4,1.6,16.2,1.6,11z" />
 					</svg>
 				</span>
 			</div>
@@ -241,18 +241,18 @@
 		<button class="hr-close-btn" tabindex="-1">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="{{ button_icon_colors }}" width="24" height="24">
 				<path
-					fill="{{ button_icon_colors }}"
-					stroke="{{ button_icon_colors }}"
-					stroke-width="1"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z" />
+					  fill="{{ button_icon_colors }}"
+					  stroke="{{ button_icon_colors }}"
+					  stroke-width="1"
+					  stroke-linecap="round"
+					  stroke-linejoin="round"
+					  d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z" />
 			</svg>
 		</button>
 	</div>
 </div>
 <a href="#hr-products" class="skip-content skip-to-product" tabindex="0" role="button"
-	>{{ label_skip_to_products }}
+   >{{ label_skip_to_products }}
 	<span id="hr-search-result" class="hr-visually-hidden" role="status" aria-live="polite" aria-atomic="true"></span>
 </a>
 {% endif %}
@@ -273,156 +273,156 @@
 
 	<div class='hr-results-container'>
 		{% unless initRender %}
-			{% if content.size > 0 %}
-				<div class='hr-content' data-tab="category" data-show-mode="search">
-					{% for contentType in content %}
-						<div class='hr-content-container'>
-							{% assign category_title = contentType[1].options.title | replace: ' ', '-' %}
-							{% if contentType[1].totalResults <= 0 %}
-								<h2 class='hr-title' data-tab='{{ contentType[1].options.type }}'>
-									<div class='hr-content-header'>
-										{{ contentType[1].options.title }}
-									</div>
-								</h2>
-								<p class='hr-content-text'>
-									{{ text_category_no_content_before }} {{ contentType[1].options.title }} {{ text_category_no_content_after }}
-								</p>
-							{% else %}
-								<h2
-										id="content-header-{{ contentType[1].options.type }}"
-										class='hr-title'
-										data-tab='{{ contentType[1].options.type }}'
-								>
-									<div class='hr-content-header'>
-										{{ contentType[1].options.title }}
-									</div>
-								</h2>
-								<ul
-										data-tab='{{ contentType[1].options.type }}'
-										data-content="{{ contentType[1].options.type }}"
-										role="list"
-										aria-labelledby="content-header-{{ contentType[1].options.type }}"
-								>
-									{% for ctnt in contentType[1].results %}
-										<li class="hr-search-overlay-content" data-type="{{ contentType[1].options.type }}">
-											<a class="hr-search-overlay-content-link" href="{{ ctnt.url }}">
-												{{ ctnt.title }}
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link" aria-hidden="true">
-													<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-													<polyline points="15 3 21 3 21 9"></polyline>
-													<line x1="10" y1="14" x2="21" y2="3"></line>
-												</svg>
-												
-												<span class="hr-search-hierarchy-wrapper">
-													{% for level in ctnt.hierarchy %}
-														{% if level != "" and level != ctnt.title %}
-														<span class="hr-search-content-hierarchy-category">{{ level }}</span>
-														{% unless forloop.last %}
-														<span class="hr-search-content-hierarchy-divider">›</span>
-														{% endunless %}
-														{% endif %}
-													{% endfor %}
-												</span>
-											</a>
-										</li>
-									{% endfor %}
-								</ul>
-							{% endif %}
-						</div>
+		{% if content.size > 0 %}
+		<div class='hr-content' data-tab="category" data-show-mode="search">
+			{% for contentType in content %}
+			<div class='hr-content-container'>
+				{% assign category_title = contentType[1].options.title | replace: ' ', '-' %}
+				{% if contentType[1].totalResults == 0 %}
+				<h2 class='hr-title' data-tab='{{ contentType[1].options.type }}'>
+					<div class='hr-content-header'>
+						{{ contentType[1].options.title }}
+					</div>
+				</h2>
+				<p class='hr-content-text'>
+					{{ text_category_no_content_before }} {{ contentType[1].options.title }} {{ text_category_no_content_after }}
+				</p>
+				{% else %}
+				<h2
+					id="content-header-{{ contentType[1].options.type }}"
+					class='hr-title'
+					data-tab='{{ contentType[1].options.type }}'
+					>
+					<div class='hr-content-header'>
+						{{ contentType[1].options.title }}
+					</div>
+				</h2>
+				<ul
+					data-tab='{{ contentType[1].options.type }}'
+					data-content="{{ contentType[1].options.type }}"
+					role="list"
+					aria-labelledby="content-header-{{ contentType[1].options.type }}"
+					>
+					{% for ctnt in contentType[1].results %}
+					<li class="hr-search-overlay-content" data-type="{{ contentType[1].options.type }}">
+						<a class="hr-search-overlay-content-link" href="{{ ctnt.url }}">
+							{{ ctnt.title }}
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link" aria-hidden="true">
+								<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+								<polyline points="15 3 21 3 21 9"></polyline>
+								<line x1="10" y1="14" x2="21" y2="3"></line>
+							</svg>
+
+							<span class="hr-search-hierarchy-wrapper">
+								{% for level in ctnt.hierarchy %}
+								{% if level != "" and level != ctnt.title %}
+								<span class="hr-search-content-hierarchy-category">{{ level }}</span>
+								{% unless forloop.last %}
+								<span class="hr-search-content-hierarchy-divider">›</span>
+								{% endunless %}
+								{% endif %}
+								{% endfor %}
+							</span>
+						</a>
+					</li>
 					{% endfor %}
-				</div>
-			{% endif %}
+				</ul>
+				{% endif %}
+			</div>
+			{% endfor %}
+		</div>
+		{% endif %}
 		{% endunless %}
 		{% unless initRender %}
-			<a href="#hr-search" class="skip-content skip-to-input" tabindex="0">{{ label_skip_to_input }}</a>
+		<a href="#hr-search" class="skip-content skip-to-input" tabindex="0">{{ label_skip_to_input }}</a>
 		{% endunless %}
 		<div id="hr-products" role="region" class='hr-products {% unless initRender %}hr-moved{% endunless %}{% if initRender %}initialcontent{% endif %}' data-tab="product" data-show-mode="search" tabindex="0">
 			{% if initialContent.size > 0 %}
-				{% unless initRender %}
-					<div class='hr-products-search-header'>
-						<strong class="hr-highlight">{{ products.totalResults }}</strong> {{ text_search_products_title }}
-					</div>
-					<div class="hr-products-text">
-						{{ result_subtitle | replace: "$query$", query | replace: "$totalResults$", products.totalResults | replace: "$contentType$", text_products }}
-					</div>
-				{% endunless %}
-				<h2 class='hr-products-header hr-initial-content-header'>{{ initialContent[0].title }}
-					<p class="hr-initial-content-subtitle">{{ initialContent[0].subtitle }}</p>
-				</h2>
+			{% unless initRender %}
+			<div class='hr-products-search-header'>
+				<strong class="hr-highlight">{{ products.totalResults }}</strong> {{ text_search_products_title }}
+			</div>
+			<div class="hr-products-text">
+				{{ result_subtitle | replace: "$query$", query | replace: "$totalResults$", products.totalResults | replace: "$contentType$", text_products }}
+			</div>
+			{% endunless %}
+			<h2 class='hr-products-header hr-initial-content-header'>{{ initialContent[0].title }}
+				<p class="hr-initial-content-subtitle">{{ initialContent[0].subtitle }}</p>
+			</h2>
 
-				<div class='hr-products-container' data-tab='product' data-content="product">
-					{% for product in initialContent[0].products %}
-						<div class="hr-search-overlay-product">
-							<a class="hr-search-overlay-product-link" href="{{ product.url }}">
-								<div class="hr-col-img">
-									{% if product_sale_label %}
-										<div class="hr-search-overlay-labels">
-											{% if product.isOnSale %}
-												<div class="hr-search-overlay-label hr-search-overlay-label__sale">
-													-{{ product.oldPrice | minus: product.price | times: 100.0 | divided_by: product.oldPrice | round }}
-													%
-												</div>
-											{% endif %}
-										</div>
-									{% endif %}
-									<figure class="hr-search-overlay-product-thumbnail">
-										<img src="{{ product.imgUrl }}" class="hr-search-overlay-product-image"
-											 alt="{{ product.title }}" title="{{ product.title }}">
-									</figure>
+			<div class='hr-products-container' data-tab='product' data-content="product">
+				{% for product in initialContent[0].products %}
+				<div class="hr-search-overlay-product">
+					<a class="hr-search-overlay-product-link" href="{{ product.url }}">
+						<div class="hr-col-img">
+							{% if product_sale_label %}
+							<div class="hr-search-overlay-labels">
+								{% if product.isOnSale %}
+								<div class="hr-search-overlay-label hr-search-overlay-label__sale">
+									-{{ product.oldPrice | minus: product.price | times: 100.0 | divided_by: product.oldPrice | round }}
+									%
 								</div>
-								<div class="hr-col-info">
-									<div class="hr-search-overlay-product-info">
-										<p class="hr-search-overlay-product-title">
-											{{ product.title }}
-										</p>
-										{% if show_product_description == true %}
-											<p class="hr-search-overlay-product-description">
-												{{ product.description }}
-											</p>
-										{% endif %}
-									</div>
-								</div>
-								<div class="hr-col-price">
-									<div class="hr-search-overlay-product-price-box">
-										{% if product.isOnSale %}
-											<p class="hr-search-overlay-product-price hr-search-overlay-product-price-old">
-												{{ product.oldPrice | priceWithCurrency: product.currency }}
-											</p>
-											<p class="hr-search-overlay-product-price hr-search-overlay-product-price-sale">
-												{{ product.price | priceWithCurrency: product.currency }}
-											</p>
-										{% else %}
-											<p class="hr-search-overlay-product-price hr-search-overlay-product-price-none">
-												&nbsp;
-											</p>
-											<p class="hr-search-overlay-product-price hr-search-overlay-product-price-normal">
-												{{ product.price | priceWithCurrency: product.currency }}
-											</p>
-										{% endif %}
-									</div>
-								</div>
-							</a>
+								{% endif %}
+							</div>
+							{% endif %}
+							<figure class="hr-search-overlay-product-thumbnail">
+								<img src="{{ product.imgUrl }}" class="hr-search-overlay-product-image"
+									 alt="{{ product.title }}" title="{{ product.title }}">
+							</figure>
 						</div>
-					{% endfor %}
+						<div class="hr-col-info">
+							<div class="hr-search-overlay-product-info">
+								<p class="hr-search-overlay-product-title">
+									{{ product.title }}
+								</p>
+								{% if show_product_description == true %}
+								<p class="hr-search-overlay-product-description">
+									{{ product.description }}
+								</p>
+								{% endif %}
+							</div>
+						</div>
+						<div class="hr-col-price">
+							<div class="hr-search-overlay-product-price-box">
+								{% if product.isOnSale %}
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-old">
+									{{ product.oldPrice | priceWithCurrency: product.currency }}
+								</p>
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-sale">
+									{{ product.price | priceWithCurrency: product.currency }}
+								</p>
+								{% else %}
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-none">
+									&nbsp;
+								</p>
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-normal">
+									{{ product.price | priceWithCurrency: product.currency }}
+								</p>
+								{% endif %}
+							</div>
+						</div>
+					</a>
 				</div>
+				{% endfor %}
+			</div>
 
 			{% elsif initRender %}
-				<div class="hr-placeholder" data-loader="product">&nbsp;</div>
+			<div class="hr-placeholder" data-loader="product">&nbsp;</div>
 			{% else %}
 			<h2 class='hr-products-header'>{{ text_products_title }}</h2>
-	
+
 			<div class="hr-products-text">
 				{{ result_subtitle | replace: "$query$", query | replace: "$totalResults$", products.totalResults | replace: "$contentType$", text_products }}
 			</div>
 
 			{% if suggestedProductStatus == 'ONLY_SUGGESTED' %}
-				<p class="hr-products-text">
-					{{ text_synonym_only_suggested }}
-				</p>
+			<p class="hr-products-text">
+				{{ text_synonym_only_suggested }}
+			</p>
 			{% elsif suggestedProductStatus == 'MIXED' %}
-				<p class="hr-products-text">
-					{{ text_synonym_mixed }}
-				</p>
+			<p class="hr-products-text">
+				{{ text_synonym_mixed }}
+			</p>
 			{% endif %}
 
 			{{ captured_filters }}
@@ -430,67 +430,67 @@
 			<!-- Products -->
 			<div class='hr-products-container' data-tab='product' data-content="product">
 				{% for product in products.results %}
-					<div class="hr-search-overlay-product{% if product.isBanner %} hr-search-overlay-b{% endif %}">
-						{% comment %} Replace "BANNER_SIZE_NAME_PLACEHOLDER" with the size created for this design {% endcomment %}
-						{% assign banner_size_search_desktop = product.bannerImages.BANNER_SIZE_NAME_PLACEHOLDER.url %}
-						{% if product.isBanner %}
-							<div class="hr-search-overlay-product-link" style="width: 100%; max-width: 100%; height:100%; margin: 0; box-shadow: none;">
-								<a href="{{ product.url }}" class="hr-b-container">
-									<div class="hr-b-image" style="background-image:url({{ banner_size_search_desktop }})"></div>
-								</a>
-							</div>
-						{% else %}
-						<a class="hr-search-overlay-product-link" href="{{ product.url }}">
-							<div class="hr-col-img">
-								{% if product_sale_label %}
-									<div class="hr-search-overlay-labels">
-										{% if product.isOnSale %}
-											<div class="hr-search-overlay-label hr-search-overlay-label__sale">
-												-{{ product.oldPrice | minus: product.price | times: 100.0 | divided_by: product.oldPrice | round }}
-												%
-											</div>
-										{% endif %}
-									</div>
-								{% endif %}
-								<figure class="hr-search-overlay-product-thumbnail">
-									<img src="{{ product.imgUrl }}" class="hr-search-overlay-product-image"
-										 alt="{{ product.title }}" title="{{ product.title }}">
-								</figure>
-							</div>
-							<div class="hr-col-info">
-								<div class="hr-search-overlay-product-info">
-									<p class="hr-search-overlay-product-title">
-										{{ product.title }}
-									</p>
-									{% if show_product_description == true %}
-										<p class="hr-search-overlay-product-description">
-											{{ product.description }}
-										</p>
-									{% endif %}
-								</div>
-							</div>
-							<div class="hr-col-price">
-								<div class="hr-search-overlay-product-price-box">
-									{% if product.isOnSale %}
-										<p class="hr-search-overlay-product-price hr-search-overlay-product-price-old">
-											{{ product.oldPrice | priceWithCurrency: product.currency }}
-										</p>
-										<p class="hr-search-overlay-product-price hr-search-overlay-product-price-sale">
-											{{ product.price | priceWithCurrency: product.currency }}
-										</p>
-									{% else %}
-										<p class="hr-search-overlay-product-price hr-search-overlay-product-price-none">
-											&nbsp;
-										</p>
-										<p class="hr-search-overlay-product-price hr-search-overlay-product-price-normal">
-											{{ product.price | priceWithCurrency: product.currency }}
-										</p>
-									{% endif %}
-								</div>
-							</div>
+				<div class="hr-search-overlay-product{% if product.isBanner %} hr-search-overlay-b{% endif %}">
+					{% comment %} Replace "BANNER_SIZE_NAME_PLACEHOLDER" with the size created for this design {% endcomment %}
+					{% assign banner_size_search_desktop = product.bannerImages.BANNER_SIZE_NAME_PLACEHOLDER.url %}
+					{% if product.isBanner %}
+					<div class="hr-search-overlay-product-link" style="width: 100%; max-width: 100%; height:100%; margin: 0; box-shadow: none;">
+						<a href="{{ product.url }}" class="hr-b-container">
+							<div class="hr-b-image" style="background-image:url({{ banner_size_search_desktop }})"></div>
 						</a>
-						{% endif %}
 					</div>
+					{% else %}
+					<a class="hr-search-overlay-product-link" href="{{ product.url }}">
+						<div class="hr-col-img">
+							{% if product_sale_label %}
+							<div class="hr-search-overlay-labels">
+								{% if product.isOnSale %}
+								<div class="hr-search-overlay-label hr-search-overlay-label__sale">
+									-{{ product.oldPrice | minus: product.price | times: 100.0 | divided_by: product.oldPrice | round }}
+									%
+								</div>
+								{% endif %}
+							</div>
+							{% endif %}
+							<figure class="hr-search-overlay-product-thumbnail">
+								<img src="{{ product.imgUrl }}" class="hr-search-overlay-product-image"
+									 alt="{{ product.title }}" title="{{ product.title }}">
+							</figure>
+						</div>
+						<div class="hr-col-info">
+							<div class="hr-search-overlay-product-info">
+								<p class="hr-search-overlay-product-title">
+									{{ product.title }}
+								</p>
+								{% if show_product_description == true %}
+								<p class="hr-search-overlay-product-description">
+									{{ product.description }}
+								</p>
+								{% endif %}
+							</div>
+						</div>
+						<div class="hr-col-price">
+							<div class="hr-search-overlay-product-price-box">
+								{% if product.isOnSale %}
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-old">
+									{{ product.oldPrice | priceWithCurrency: product.currency }}
+								</p>
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-sale">
+									{{ product.price | priceWithCurrency: product.currency }}
+								</p>
+								{% else %}
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-none">
+									&nbsp;
+								</p>
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-normal">
+									{{ product.price | priceWithCurrency: product.currency }}
+								</p>
+								{% endif %}
+							</div>
+						</div>
+					</a>
+					{% endif %}
+				</div>
 				{% endfor %}
 				{% endif %}
 			</div>

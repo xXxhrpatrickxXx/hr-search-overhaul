@@ -233,214 +233,214 @@
 				 data-show-mode="{{ contentType[1].showMode }}"
 				 data-tab='{{ contentType[1].options.type }}'
 				 data-content="{{ contentType[1].options.type }}">
-				{% if contentType[1].totalResults <= 0 %}
-													 <h2 class='hr-title'
-				data-tab='{{ contentType[1].options.type }}'
-				data-show-mode='{{ contentType[1].showMode }}'
-				>
-				<div class='hr-content-header'>
-					{{ contentType[1].options.title }}
-				</div>
+				{% if contentType[1].totalResults == 0 %}
+				<h2 class='hr-title'
+					data-tab='{{ contentType[1].options.type }}'
+					data-show-mode='{{ contentType[1].showMode }}'
+					>
+					<div class='hr-content-header'>
+						{{ contentType[1].options.title }}
+					</div>
 				</h2>
-			<p class='hr-content-text'>{{ text_category_no_content_before }}
-				{{ contentType[1].options.title | downcase }}
-				{{ text_category_no_content_after }}
-			</p>
-			{% else %}
-			<h2 class='hr-title' data-tab='{{ contentType[1].options.type }}' data-show-mode="{{ contentType[1].showMode }}">
-				<div class='hr-content-header'>
-					{{ contentType[1].options.title }}
-				</div>
-			</h2>
-			<ul
-				data-tab='{{ contentType[1].options.type }}'
-				data-content="{{ contentType[1].options.type }}"
-				role="list"
-				aria-labelledby="content-header-{{ contentType[1].options.type }}"
-				>
-				{% for ctnt in contentType[1].results %}
-				<li class="hr-search-overlay-content" data-type="{{ contentType[1].options.type }}">
-					<a class="hr-search-overlay-content-link" href="{{ ctnt.url }}">
-						{{ ctnt.title }}
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link" aria-hidden="true">
-							<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-							<polyline points="15 3 21 3 21 9"></polyline>
-							<line x1="10" y1="14" x2="21" y2="3"></line>
-						</svg>
-
-						<span class="hr-search-hierarchy-wrapper">
-							{% for level in ctnt.hierarchy %}
-							{% if level != "" and level != ctnt.title %}
-							<span class="hr-search-content-hierarchy-category">{{ level }}</span>
-							{% unless forloop.last %}
-							<span class="hr-search-content-hierarchy-divider">›</span>
-							{% endunless %}
-							{% endif %}
-							{% endfor %}
-						</span>
-					</a>
-				</li>
-				{% endfor %}
-			</ul>
-			{% endif %}
-		</div>
-		{% endfor %}
-	</div>
-	{% endif %}
-	{% endunless %}
-	<div id="hr-products" role="region" class='hr-products {% unless initRender %}hr-moved{% endunless %}{% if initRender %}initialcontent{% endif %}' data-tab="product" data-show-mode="search" tabindex="0">
-		{% if initialContent.size > 0 %}
-		{% unless initRender %}
-		<div class='hr-products-search-header'>
-			<strong class="hr-highlight">{{ products.totalResults }}</strong>
-			{{ text_search_products_title }}
-		</div>
-		<div class="hr-products-text">
-			{{ result_subtitle | replace: "$query$", query | replace: "$totalResults$", products.totalResults | replace: "$contentType$", text_products }}
-		</div>
-		{% endunless %}
-		<h2 class='hr-products-header hr-initial-content-header'>{{ initialContent[0].title }}
-			<p class="hr-initial-content-subtitle">{{ initialContent[0].subtitle }}</p>
-		</h2>
-		<div class='hr-products-container' data-tab='product' data-content="product">
-			{% for product in initialContent[0].products %}
-			<div class="hr-search-overlay-product">
-				<a class="hr-search-overlay-product-link" href="{{ product.url }}">
-					<div class="hr-col-img">
-						{% if product_sale_label %}
-						<div class="hr-search-overlay-labels">
-							{% if product.isOnSale %}
-							<div class="hr-search-overlay-label hr-search-overlay-label__sale">
-								-{{ product.oldPrice | minus: product.price | times: 100.0 | divided_by: product.oldPrice | round }}
-								%
-							</div>
-							{% endif %}
-						</div>
-						{% endif %}
-						<figure class="hr-search-overlay-product-thumbnail">
-							<img src="{{ product.imgUrl }}" class="hr-search-overlay-product-image" alt="{{ product.title }}" title="{{ product.title }}">
-						</figure>
-					</div>
-					<div class="hr-col-info">
-						<div class="hr-search-overlay-product-info">
-							<p class="hr-search-overlay-product-title">
-								{{ product.title }}
-							</p>
-							{% if show_product_description == true %}
-							<p class="hr-search-overlay-product-description">
-								{{ product.description }}
-							</p>
-							{% endif %}
-						</div>
-					</div>
-					<div class="hr-col-price">
-						<div class="hr-search-overlay-product-price-box">
-							{% if product.isOnSale %}
-							<p class="hr-search-overlay-product-price hr-search-overlay-product-price-old">
-								{{ product.oldPrice | priceWithCurrency: product.currency }}
-							</p>
-							<p class="hr-search-overlay-product-price hr-search-overlay-product-price-sale">
-								{{ product.price | priceWithCurrency: product.currency }}
-							</p>
-							{% else %}
-							<p class="hr-search-overlay-product-price hr-search-overlay-product-price-none">
-								&nbsp;
-							</p>
-							<p class="hr-search-overlay-product-price hr-search-overlay-product-price-normal">
-								{{ product.price | priceWithCurrency: product.currency }}
-							</p>
-							{% endif %}
-						</div>
-					</div>
-				</a>
-			</div>
-			{% endfor %}
-		</div>
-		{% elsif initRender %}
-		<div class="hr-placeholder" data-loader="product">&nbsp;</div>
-		{% else %}
-		<h2 class='hr-products-header'>{{ text_products_title }}</h2>
-
-		<div class="hr-products-text">
-			{{ result_subtitle | replace: "$query$", query | replace: "$totalResults$", products.totalResults | replace: "$contentType$", text_products }}
-		</div>
-
-		{% if suggestedProductStatus == 'ONLY_SUGGESTED' %}
-		<p class="hr-products-text">
-			{{ text_synonym_only_suggested }}
-		</p>
-		{% elsif suggestedProductStatus == 'MIXED' %}
-		<p class="hr-products-text">
-			{{ text_synonym_mixed }}
-		</p>
-		{% endif %}
-		{{ captured_filters }}
-		{% comment %}Products{% endcomment %}
-		<div class='hr-products-container' data-tab='product' data-content="product">
-			{% for product in products.results %}
-			<div class="hr-search-overlay-product{% if product.isBanner %} hr-search-overlay-b{% endif %}">
-				{% comment %} Replace "BANNER_SIZE_NAME_PLACEHOLDER" with the size created for this design {% endcomment %}
-				{% assign banner_size_search_desktop = product.bannerImages.BANNER_SIZE_NAME_PLACEHOLDER.url %}
-				{% if product.isBanner %}
-				<div class="hr-search-overlay-product-link" style="width: 100%; max-width: 100%; height:100%; margin: 0; box-shadow: none;">
-					<a href="{{ product.url }}" class="hr-b-container">
-						<div class="hr-b-image" style="background-image:url({{ banner_size_search_desktop }})"></div>
-					</a>
-				</div>
+				<p class='hr-content-text'>{{ text_category_no_content_before }}
+					{{ contentType[1].options.title | downcase }}
+					{{ text_category_no_content_after }}
+				</p>
 				{% else %}
-				<a class="hr-search-overlay-product-link" href="{{ product.url }}">
-					<div class="hr-col-img">
-						{% if product_sale_label %}
-						<div class="hr-search-overlay-labels">
-							{% if product.isOnSale %}
-							<div class="hr-search-overlay-label hr-search-overlay-label__sale">
-								-{{ product.oldPrice | minus: product.price | times: 100.0 | divided_by: product.oldPrice | round }}
-								%
-							</div>
-							{% endif %}
-						</div>
-						{% endif %}
-						<figure class="hr-search-overlay-product-thumbnail">
-							<img src="{{ product.imgUrl }}" class="hr-search-overlay-product-image" alt="{{ product.title }}" title="{{ product.title }}"/>
-						</figure>
+				<h2 class='hr-title' data-tab='{{ contentType[1].options.type }}' data-show-mode="{{ contentType[1].showMode }}">
+					<div class='hr-content-header'>
+						{{ contentType[1].options.title }}
 					</div>
-					<div class="hr-col-info">
-						<div class="hr-search-overlay-product-info">
-							<p class="hr-search-overlay-product-title">
-								{{ product.title }}
-							</p>
-							{% if show_product_description == true %}
-							<p class="hr-search-overlay-product-description">
-								{{ product.description }}
-							</p>
-							{% endif %}
-						</div>
-					</div>
-					<div class="hr-col-price">
-						<div class="hr-search-overlay-product-price-box">
-							{% if product.isOnSale %}
-							<p class="hr-search-overlay-product-price hr-search-overlay-product-price-old">
-								{{ product.oldPrice | priceWithCurrency: product.currency }}
-							</p>
-							<p class="hr-search-overlay-product-price hr-search-overlay-product-price-sale">
-								{{ product.price | priceWithCurrency: product.currency }}
-							</p>
-							{% else %}
-							<p class="hr-search-overlay-product-price hr-search-overlay-product-price-none">
-								&nbsp;
-							</p>
-							<p class="hr-search-overlay-product-price hr-search-overlay-product-price-normal">
-								{{ product.price | priceWithCurrency: product.currency }}
-							</p>
-							{% endif %}
-						</div>
-					</div>
-				</a>
+				</h2>
+				<ul
+					data-tab='{{ contentType[1].options.type }}'
+					data-content="{{ contentType[1].options.type }}"
+					role="list"
+					aria-labelledby="content-header-{{ contentType[1].options.type }}"
+					>
+					{% for ctnt in contentType[1].results %}
+					<li class="hr-search-overlay-content" data-type="{{ contentType[1].options.type }}">
+						<a class="hr-search-overlay-content-link" href="{{ ctnt.url }}">
+							{{ ctnt.title }}
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link" aria-hidden="true">
+								<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+								<polyline points="15 3 21 3 21 9"></polyline>
+								<line x1="10" y1="14" x2="21" y2="3"></line>
+							</svg>
+
+							<span class="hr-search-hierarchy-wrapper">
+								{% for level in ctnt.hierarchy %}
+								{% if level != "" and level != ctnt.title %}
+								<span class="hr-search-content-hierarchy-category">{{ level }}</span>
+								{% unless forloop.last %}
+								<span class="hr-search-content-hierarchy-divider">›</span>
+								{% endunless %}
+								{% endif %}
+								{% endfor %}
+							</span>
+						</a>
+					</li>
+					{% endfor %}
+				</ul>
 				{% endif %}
 			</div>
 			{% endfor %}
 		</div>
 		{% endif %}
+		{% endunless %}
+		<div id="hr-products" role="region" class='hr-products {% unless initRender %}hr-moved{% endunless %}{% if initRender %}initialcontent{% endif %}' data-tab="product" data-show-mode="search" tabindex="0">
+			{% if initialContent.size > 0 %}
+			{% unless initRender %}
+			<div class='hr-products-search-header'>
+				<strong class="hr-highlight">{{ products.totalResults }}</strong>
+				{{ text_search_products_title }}
+			</div>
+			<div class="hr-products-text">
+				{{ result_subtitle | replace: "$query$", query | replace: "$totalResults$", products.totalResults | replace: "$contentType$", text_products }}
+			</div>
+			{% endunless %}
+			<h2 class='hr-products-header hr-initial-content-header'>{{ initialContent[0].title }}
+				<p class="hr-initial-content-subtitle">{{ initialContent[0].subtitle }}</p>
+			</h2>
+			<div class='hr-products-container' data-tab='product' data-content="product">
+				{% for product in initialContent[0].products %}
+				<div class="hr-search-overlay-product">
+					<a class="hr-search-overlay-product-link" href="{{ product.url }}">
+						<div class="hr-col-img">
+							{% if product_sale_label %}
+							<div class="hr-search-overlay-labels">
+								{% if product.isOnSale %}
+								<div class="hr-search-overlay-label hr-search-overlay-label__sale">
+									-{{ product.oldPrice | minus: product.price | times: 100.0 | divided_by: product.oldPrice | round }}
+									%
+								</div>
+								{% endif %}
+							</div>
+							{% endif %}
+							<figure class="hr-search-overlay-product-thumbnail">
+								<img src="{{ product.imgUrl }}" class="hr-search-overlay-product-image" alt="{{ product.title }}" title="{{ product.title }}">
+							</figure>
+						</div>
+						<div class="hr-col-info">
+							<div class="hr-search-overlay-product-info">
+								<p class="hr-search-overlay-product-title">
+									{{ product.title }}
+								</p>
+								{% if show_product_description == true %}
+								<p class="hr-search-overlay-product-description">
+									{{ product.description }}
+								</p>
+								{% endif %}
+							</div>
+						</div>
+						<div class="hr-col-price">
+							<div class="hr-search-overlay-product-price-box">
+								{% if product.isOnSale %}
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-old">
+									{{ product.oldPrice | priceWithCurrency: product.currency }}
+								</p>
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-sale">
+									{{ product.price | priceWithCurrency: product.currency }}
+								</p>
+								{% else %}
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-none">
+									&nbsp;
+								</p>
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-normal">
+									{{ product.price | priceWithCurrency: product.currency }}
+								</p>
+								{% endif %}
+							</div>
+						</div>
+					</a>
+				</div>
+				{% endfor %}
+			</div>
+			{% elsif initRender %}
+			<div class="hr-placeholder" data-loader="product">&nbsp;</div>
+			{% else %}
+			<h2 class='hr-products-header'>{{ text_products_title }}</h2>
+
+			<div class="hr-products-text">
+				{{ result_subtitle | replace: "$query$", query | replace: "$totalResults$", products.totalResults | replace: "$contentType$", text_products }}
+			</div>
+
+			{% if suggestedProductStatus == 'ONLY_SUGGESTED' %}
+			<p class="hr-products-text">
+				{{ text_synonym_only_suggested }}
+			</p>
+			{% elsif suggestedProductStatus == 'MIXED' %}
+			<p class="hr-products-text">
+				{{ text_synonym_mixed }}
+			</p>
+			{% endif %}
+			{{ captured_filters }}
+			{% comment %}Products{% endcomment %}
+			<div class='hr-products-container' data-tab='product' data-content="product">
+				{% for product in products.results %}
+				<div class="hr-search-overlay-product{% if product.isBanner %} hr-search-overlay-b{% endif %}">
+					{% comment %} Replace "BANNER_SIZE_NAME_PLACEHOLDER" with the size created for this design {% endcomment %}
+					{% assign banner_size_search_desktop = product.bannerImages.BANNER_SIZE_NAME_PLACEHOLDER.url %}
+					{% if product.isBanner %}
+					<div class="hr-search-overlay-product-link" style="width: 100%; max-width: 100%; height:100%; margin: 0; box-shadow: none;">
+						<a href="{{ product.url }}" class="hr-b-container">
+							<div class="hr-b-image" style="background-image:url({{ banner_size_search_desktop }})"></div>
+						</a>
+					</div>
+					{% else %}
+					<a class="hr-search-overlay-product-link" href="{{ product.url }}">
+						<div class="hr-col-img">
+							{% if product_sale_label %}
+							<div class="hr-search-overlay-labels">
+								{% if product.isOnSale %}
+								<div class="hr-search-overlay-label hr-search-overlay-label__sale">
+									-{{ product.oldPrice | minus: product.price | times: 100.0 | divided_by: product.oldPrice | round }}
+									%
+								</div>
+								{% endif %}
+							</div>
+							{% endif %}
+							<figure class="hr-search-overlay-product-thumbnail">
+								<img src="{{ product.imgUrl }}" class="hr-search-overlay-product-image" alt="{{ product.title }}" title="{{ product.title }}"/>
+							</figure>
+						</div>
+						<div class="hr-col-info">
+							<div class="hr-search-overlay-product-info">
+								<p class="hr-search-overlay-product-title">
+									{{ product.title }}
+								</p>
+								{% if show_product_description == true %}
+								<p class="hr-search-overlay-product-description">
+									{{ product.description }}
+								</p>
+								{% endif %}
+							</div>
+						</div>
+						<div class="hr-col-price">
+							<div class="hr-search-overlay-product-price-box">
+								{% if product.isOnSale %}
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-old">
+									{{ product.oldPrice | priceWithCurrency: product.currency }}
+								</p>
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-sale">
+									{{ product.price | priceWithCurrency: product.currency }}
+								</p>
+								{% else %}
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-none">
+									&nbsp;
+								</p>
+								<p class="hr-search-overlay-product-price hr-search-overlay-product-price-normal">
+									{{ product.price | priceWithCurrency: product.currency }}
+								</p>
+								{% endif %}
+							</div>
+						</div>
+					</a>
+					{% endif %}
+				</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
 	</div>
-</div>
 </div>
