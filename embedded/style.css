@@ -50,6 +50,7 @@
 /* Content section  */
 {# Section content tab #}
 {# boolean show_category_content_hierarchy = false #}
+{# boolean show_products_results_text = true #}
 
 /*
 * ===================
@@ -199,6 +200,12 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 {% if result_highlight_text_in_bold %}
 .hr-overlay-search .hr-highlight {
 	font-weight: bold;
+}
+{% endif %}
+
+{% if show_products_results_text == false %}
+.hr-overlay-search .hr-products-text {
+	display: none;
 }
 {% endif %}
 
