@@ -270,7 +270,7 @@
 
 						<span class="hr-search-hierarchy-wrapper">
 							{% for level in ctnt.hierarchy %}
-							{% if level != "" and level != current_content_item.title %}
+							{% if level != "" and level != ctnt.title %}
 							<span class="hr-search-content-hierarchy-category">{{ level }}</span>
 							{% unless forloop.last %}
 							<span class="hr-search-content-hierarchy-divider">›</span>
