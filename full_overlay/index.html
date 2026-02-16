@@ -46,7 +46,7 @@
 {# text text_products_title = "Products" #}
 {# text text_products_title__Danish = "Produkter" #}
 {# text text_products_title__Swedish = "Produkter" #}
-{# text text_products_title_Dutch = "Producten" #}
+{# text text_products_title__Dutch = "Producten" #}
 {# text text_products_title__Norwegian = "Produkter" #}
 {# text text_products_title__Finnish = "Tuotteet" #}
 {# text text_products_title__German = "Produkte" #}
@@ -215,63 +215,62 @@
 {% endcapture %}
 
 {% if initRender %}
-	<div class="hr-header hr-nav">
-		<div class="hr-logo-container">
-			<a class="hr-logo" href="/" tabindex="0">
-				<img src="{{ header_logo_url }}" alt="{{ webshop_name }}">
-			</a>
-		</div>
-		<div class="hr-search-plus-redirect">
-			<form role="search">
-				<div class="hr-search" id="hr-search" tabindex="-1">
-					<input type='search' maxlength="{{ search_input_character_limit }}" placeholder='{{ text_type_to_search }}' aria-label="{{ text_type_to_search }}" autocomplete="off"/>
-					<span id="hr-search-result"
-						  class="hr-visually-hidden"
-						  role="status"
-						  aria-live="polite"
-						  aria-atomic="true"
-					>
-					</span>
-					<span class="hr-btn-search" type="submit">
+<div class="hr-header hr-nav">
+	<div class="hr-logo-container">
+		<a class="hr-logo" href="/" tabindex="0">
+			<img src="{{ header_logo_url }}" alt="{{ webshop_name }}" />
+		</a>
+	</div>
+	<div class="hr-search">
+		<form role="search">
+			<div class="hr-search" id="hr-search" tabindex="-1">
+				<input type="search" maxlength="{{ search_input_character_limit }}" placeholder="{{ text_type_to_search }}" aria-label="{{ text_type_to_search }}" autocomplete="off" />
+				<span id="hr-search-result" class="hr-visually-hidden" role="status" aria-live="polite" aria-atomic="true"> </span>
+				<span class="hr-btn-search" type="submit">
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" xml:space="preserve">
-						<path fill="{{ button_icon_colors }}" d="M23.6,22.4l-4.3-4.3C21,16.3,22,13.7,22,11c0-6.1-4.9-11-11-11S0,4.9,0,11s4.9,11,11,11c2.7,0,5.3-1,7.2-2.7
-						l4.3,4.3L23.6,22.4z M1.6,11c0-5.2,4.2-9.4,9.4-9.4c5.2,0,9.4,4.2,9.4,9.4c0,5.2-4.2,9.4-9.4,9.4C5.8,20.4,1.6,16.2,1.6,11z"/>
+						<path
+							fill="{{ button_icon_colors }}"
+							d="M23.6,22.4l-4.3-4.3C21,16.3,22,13.7,22,11c0-6.1-4.9-11-11-11S0,4.9,0,11s4.9,11,11,11c2.7,0,5.3-1,7.2-2.7
+						l4.3,4.3L23.6,22.4z M1.6,11c0-5.2,4.2-9.4,9.4-9.4c5.2,0,9.4,4.2,9.4,9.4c0,5.2-4.2,9.4-9.4,9.4C5.8,20.4,1.6,16.2,1.6,11z" />
 					</svg>
 				</span>
-				</div>
-			</form>
-			{% comment %} !!! IMPORTANT !!!! Redirects will be removed, if the header height is below 125px {% endcomment %}
-			<div class="hr-redirects">
-				<div class="hr-redirects-container" style="display: none;" id="hr-go-to-label">
-					{{ text_go_directly_to }}
-					<a class="hr-redirect-link" tabindex="0" aria-labelledby="hr-go-to-label hr-redirect-link-title">
-						<span id="hr-redirect-link-title" class="hr-redirect-title" aria-hidden="true"></span>
-						<span aria-hidden="true">↵</span>
-					</a>
-				</div>
 			</div>
-		</div>
-		<div class='hr-close'>
-			<button class='hr-close-btn' tabindex="-1">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="{{ button_icon_colors }}" width="24" height="24">
-					<path fill="{{ button_icon_colors }}" stroke="{{ button_icon_colors }}" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"/>
-				</svg>
-			</button>
-		</div>
+		</form>
 	</div>
-	<a href="#hr-products" class="skip-content skip-to-product" tabindex="0" role="button">{{ label_skip_to_products }}
-	<span 
-		id="hr-search-result"
-		class="hr-visually-hidden"
-		role="status" 
-		aria-live="polite" 
-		aria-atomic="true"
-	></span>
+	<div class="hr-close">
+		<button class="hr-close-btn" tabindex="-1">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="{{ button_icon_colors }}" width="24" height="24">
+				<path
+					fill="{{ button_icon_colors }}"
+					stroke="{{ button_icon_colors }}"
+					stroke-width="1"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z" />
+			</svg>
+		</button>
+	</div>
+</div>
+<a href="#hr-products" class="skip-content skip-to-product" tabindex="0" role="button"
+	>{{ label_skip_to_products }}
+	<span id="hr-search-result" class="hr-visually-hidden" role="status" aria-live="polite" aria-atomic="true"></span>
 </a>
 {% endif %}
 
 {% assign content = content | items %}
 <div class="hr-results" data-show-mode="search">
+	<div class="hr-search-plus-redirect">
+		<div class="hr-redirects">
+			<div class="hr-redirects-container" style="display: none;" id="hr-go-to-label">
+				{{ text_go_directly_to }}
+				<a class="hr-redirect-link" tabindex="0" aria-labelledby="hr-go-to-label hr-redirect-link-title">
+					<span id="hr-redirect-link-title" class="hr-redirect-title" aria-hidden="true"></span>
+					<span aria-hidden="true">↵</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
 	<div class='hr-results-container'>
 		{% unless initRender %}
 			{% if content.size > 0 %}
