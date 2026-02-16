@@ -620,7 +620,6 @@
 }
 
 .hr-overlay-search > .hr-tabs > .hr-tab-content[data-content-type="horizontal"] .hr-tab-body .hr-tab-wrapper {
-	width: fit-content;
 	margin: auto;
 }
 
@@ -647,8 +646,8 @@
 	z-index: 1;
 }
 
-.hr-overlay-search .hr-tab-content[data-content-type="vertical"] .hr-search-overlay-content:hover {
-	box-shadow: 0px 4px 12px rgba(0,0,0,.2);
+.hr-overlay-search .hr-search-overlay-content-link {
+	text-decoration: none;
 }
 
 .hr-overlay-search .hr-tab-content[data-content-type="vertical"] .hr-search-overlay-content .hr-search-overlay-content-link {
@@ -794,10 +793,6 @@
 .hr-overlay-search .hr-search-overlay-grid-container .hr-search-overlay-product {
 	position: relative;
 	box-sizing: border-box;
-}
-
-.hr-overlay-search .hr-search-overlay-product:hover {
-	box-shadow: 0px 4px 12px rgba(0,0,0,.2);
 }
 
 .hr-overlay-search .hr-search-overlay-product > .hr-search-overlay-product-link {
