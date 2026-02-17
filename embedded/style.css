@@ -1110,9 +1110,9 @@ ul.aw-filter-list li.selected > ul,
 	color: #666666;
 }
 
-.aw-filter-tag-list input[type="checkbox"]:focus,
-.hr-overlay-search .hr-filters-selected .hr-filter-selected-tag-clear:focus,
-.hr-overlay-search .hr-filters-selected .hr-filter-selected-tag-reset-btn:focus {
+.aw-filter-tag-list input[type="checkbox"]:focus-visible,
+.hr-overlay-search .hr-filters-selected .hr-filter-selected-tag-clear:focus-visible,
+.hr-overlay-search .hr-filters-selected .hr-filter-selected-tag-reset-btn:focus-visible {
 	outline: 2px solid #007bff;
 }
 
