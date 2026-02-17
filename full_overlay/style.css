@@ -579,6 +579,10 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	stroke: {{ content_icon_color }};	
 }
 
+.hr-overlay-search .hr-search-hierarchy-wrapper {
+	display: none;	
+}
+
 {% if show_category_content_hierarchy %}
 .hr-overlay-search .hr-search-hierarchy-wrapper {
     display: block;
