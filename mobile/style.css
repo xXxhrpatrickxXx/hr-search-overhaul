@@ -711,6 +711,10 @@
 	white-space: nowrap;
 }
 
+.hr-overlay-search .hr-search-hierarchy-wrapper {
+	display: none;	
+}
+
 {% if show_category_content_hierarchy %}
 .hr-overlay-search .hr-search-hierarchy-wrapper_horizontal {
 	display: inline-flex;
