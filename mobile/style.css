@@ -1261,14 +1261,14 @@ ul.aw-filter-list li label {
 * ===================
 */
 
-.hr-icon-container {
+.hr-overlay-search .hr-icon-container {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
 	cursor: pointer;
 }
 
-.hr-icon {
+.hr-overlay-search .hr-icon {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
