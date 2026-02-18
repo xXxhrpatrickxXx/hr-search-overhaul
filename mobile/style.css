@@ -1141,8 +1141,8 @@ button.hr-filters:disabled .hr-selected-filter-count {
 	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);
 	-webkit-transform: rotate(45deg);
-	position: absolute; 
-	right: 100px;
+	position: relative; 
+	right: -10px;
 }
 
 .hr-search-overlay-filter-wrap .aw-filter-list li:not(:has(ul)) label::after {
@@ -1213,6 +1213,7 @@ ul.aw-filter-list li.selected > ul,
 ul.aw-filter-list ul.has-selected {
 	display: block;
 	margin: 14px 0 0;
+	padding: 14px 24px;
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
 }
@@ -1228,7 +1229,6 @@ ul.aw-filter-list ul.has-selected:first-of-type {
 .hr-filter-tag-list > label,
 .hr-search-overlay-filter-wrap ul li, .aw-filter-tag-list > label {
 	margin: 0;
-	padding: 14px 24px;
 	display: flex;
 	flex-direction: column;
 	font-size: 16px;
