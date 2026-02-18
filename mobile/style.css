@@ -1144,6 +1144,10 @@ button.hr-filters:disabled .hr-selected-filter-count {
 	position: absolute; 
 	right: 100px;
 }
+
+.hr-search-overlay-filter-wrap .aw-filter-list li:not(:has(ul)) label::after {
+	display: none;
+}
 {% endif %}
 
 /** Filters - Sorting **/
