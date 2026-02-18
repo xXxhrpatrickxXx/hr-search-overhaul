@@ -833,6 +833,7 @@
 .hr-overlay-search .hr-search-overlay-product > .hr-search-overlay-product-link {
 	color: #363636;
 	text-decoration: none;
+	display: block;
 }
 
 .hr-overlay-search .hr-search-overlay-product-thumbnail {
