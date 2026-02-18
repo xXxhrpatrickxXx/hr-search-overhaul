@@ -85,6 +85,7 @@
 {# color reset_filters_button_background_color = "#ffffff" #}
 {# text reset_filters_button_border_px = "0" #}
 {# text reset_filters_button_border_radius_px = "8" #}
+{# bool show_filters_subvalue_indication = true #}
 
 /*
 * ===================
@@ -1130,6 +1131,7 @@ button.hr-filters:disabled .hr-selected-filter-count {
 	padding: 6px 0px;
 }
 
+{% if show_filters_subvalue_indication %}
 .hr-search-overlay-filter-wrap .aw-filter-list label::after {
 	content: '';
 	border: solid rgb(17, 17, 17);
@@ -1142,6 +1144,7 @@ button.hr-filters:disabled .hr-selected-filter-count {
 	position: absolute; 
 	right: 100px;
 }
+{% endif %}
 
 /** Filters - Sorting **/
 
