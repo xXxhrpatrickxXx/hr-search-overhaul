@@ -919,7 +919,7 @@
 /* Range Slider */
 .hr-range-slider,
 .aw-range-slider {
-	margin: 14px 25px 8px 25px;
+	margin: 14px 15px 8px;
 	position: relative;
 	height: 8px;
 	background-color: {{ range_filter_slider_background_color }};
@@ -947,25 +947,28 @@
 }
 
 .hr-range-slider-text .hr-range-slider-text-from,
-.aw-range-slider-text .aw-range-slider-text-from {
+.aw-range-slider-text .aw-range-slider-text-from,
+.hr-range-slider-text .hr-range-slider-text-to,
+.aw-range-slider-text .aw-range-slider-text-to { 
 	color: {{ range_filter_slider_draggable_background_color }};
-	float:left;
 	border: none;
+	background-color: transparent;
+	/* margin: 0 15px; */
 }
 
-.aw-range-slider-text .aw-range-slider-text-from:focus {
+.aw-range-slider-text .aw-range-slider-text-from:focus,
+.aw-range-slider-text .aw-range-slider-text-to:focus {
 	outline: none;
+}
+
+.hr-range-slider-text .hr-range-slider-text-from,
+.aw-range-slider-text .aw-range-slider-text-from {
+	float:left;
 }
 
 .hr-range-slider-text .hr-range-slider-text-to,
 .aw-range-slider-text .aw-range-slider-text-to {
-	color: {{ range_filter_slider_draggable_background_color }};
 	float:right;
-	border: none;
-}
-
-.aw-range-slider-text .aw-range-slider-text-to:focus {
-	outline: none;
 }
 
 .hr-range-slider-text .hr-range-slider-text-clear-float,
@@ -1149,6 +1152,15 @@ button.hr-filters:disabled .hr-selected-filter-count {
 	display: none;
 }
 {% endif %}
+
+.hr-filters .hr-search-overlay-filter[data-filter="price"] {
+	margin: 10px 20px;
+	padding: 15px;
+	background-color: {{ secondary_shop_color }};
+	border-radius: 12px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+}
 
 /** Filters - Sorting **/
 
