@@ -1,4 +1,4 @@
-// version 1.0.6
+// version 1.1
 import "runtime";
 import "ui_overlay_vanilla";
 import "ui_utility_vanilla";
@@ -231,7 +231,7 @@ function activate() {
 				document.querySelector(".hr-results").remove();
 				var results = template(".hr-results");
 				overlay.append(results);
-				
+
 				var redirects_container = overlay.querySelector(".hr-redirects-container");
 				var redirect = search_redirects.match(searcher.search_term, key);
 				if (redirect) {
