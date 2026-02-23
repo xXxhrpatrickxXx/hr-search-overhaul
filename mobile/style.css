@@ -1158,8 +1158,6 @@ button.hr-filters:disabled .hr-selected-filter-count {
 	padding: 15px;
 	background-color: {{ secondary_shop_color }};
 	border-radius: 12px;
-	-webkit-border-radius: 12px;
-	-moz-border-radius: 12px;
 }
 
 /** Filters - Sorting **/
