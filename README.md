@@ -13,12 +13,12 @@ Overhauling search templates to reduce clutter, fix bugs and improve reusability
 - Implement Andreas' sidebar filters for desktop search ⬜
 
 ### Mobile
-- Check header nav tab order ⬜
+- Check header nav tab order ✅
 - Add hierarchy filter icon to indicate if subcategories exist ✅
 - Switch background images to SVG for icons (header, island, filters) ⬜
 - Use currentColor for SVGs ⬜
 - Neutral gray Liquid variable for content bubbles, "show results" button etc. ⬜
 - Remove logo and move header buttons next to search input ⬜
-- Make price slider filter more appealing ⬜ 
+- Make price slider filter more appealing ✅
 - Make tabs more like arkenzoo.se (pills) ⬜ 
 - Related to above point, figure out what is going on with tabs being hidden incorrectly ⬜ 
