@@ -5,12 +5,14 @@ Overhauling search templates to reduce clutter, fix bugs and improve reusability
 ### General
 - Capture product tile to avoid duplication? ✅
 - Add searchable filters ⬜
+- Make content hierarchies easily displayable ✅
 
 ### Desktop
 - Add "Your search matches X products" string when searching ✅
 - Get rid of unnecessary {{ captured_filters }} ✅
 - Add content links limit /w "Show more" button ⬜
 - Implement Andreas' sidebar filters for desktop search ⬜
+- Make filter count show by default. Add Liquid variable to control ✅
 
 ### Mobile
 - Check header nav tab order ✅
