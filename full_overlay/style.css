@@ -815,7 +815,6 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 .hr-overlay-search .hr-filters,
 .hr-overlay-search .hr-clear-filters {
 	padding: 0;
-	margin-bottom: 1em;
 	width: 100%;
 }
 
