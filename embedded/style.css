@@ -20,7 +20,7 @@
 /* Filters */
 {# color notification_bubble_background_color = {{ primary_shop_color }} #}
 {# color notification_bubble_text_color = "#ffffff" #}
-{# boolean hide_filter_counter = false #}
+{# boolean display_filter_count = true #}
 
 {# color range_filter_slider_border_color = "#ffffff" #}
 {# color range_filter_slider_background_color = "#232324" #}
@@ -872,7 +872,7 @@ body.hr-search-disable-scroll > .hr-overlay-search {
 	font-weight: bold;
 }
 
-{% if hide_filter_counter %}
+{% if display_filter_count %}
 .hr-overlay-search .hr-filter-tag-count,
 .hr-overlay-search .aw-filter-tag-count {
 	display: none;
