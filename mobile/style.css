@@ -1153,7 +1153,7 @@ button.hr-filters:disabled .hr-selected-filter-count {
 }
 {% endif %}
 
-.hr-filters .hr-search-overlay-filter[data-filter="price"] {
+.hr-filters .hr-search-overlay-filter[data-ranged="true"] {
 	margin: 10px 20px;
 	padding: 15px;
 	background-color: {{ secondary_shop_color }};
