@@ -16,14 +16,14 @@
 {# text text_go_directly_to__German = "Gehe zu: " #}
 {# text text_go_directly_to__French = "Aller à: " #}
 
-{# text text_products_title = "Products" #}
-{# text text_products_title__Danish = "Produkter" #}
-{# text text_products_title__Swedish = "Produkter" #}
-{# text text_products_title__Dutch = "Producten" #}
-{# text text_products_title__Norwegian = "Produkter" #}
-{# text text_products_title__Finnish = "Tuotteet" #}
-{# text text_products_title__German = "Produkte" #}
-{# text text_products_title__French = "Des produits" #}
+{# text text_product_title = "Products" #}
+{# text text_product_title__Danish = "Produkter" #}
+{# text text_product_title__Swedish = "Produkter" #}
+{# text text_product_title__Dutch = "Producten" #}
+{# text text_product_title__Norwegian = "Produkter" #}
+{# text text_product_title__Finnish = "Tuotteet" #}
+{# text text_product_title__German = "Produkte" #}
+{# text text_product_title__French = "Des produits" #}
 
 {# text text_filters_selected_clear_button = "Clear all filters" #}
 {# text text_filters_selected_clear_button__Danish = "Fjern alle filtre" #}
@@ -364,7 +364,7 @@
 		<div id="hr-products" role="region" class='hr-products {% unless initRender %}hr-moved{% endunless %}{% if initRender %}initialcontent{% endif %}' data-tab="product" data-show-mode="search" tabindex="0">
 			{% if initialContent.size > 0 %}
 			{% unless initRender %}
-			<h2 class='hr-products-header'>{{ text_products_title }}</h2>
+			<h2 class='hr-products-header'>{{ text_product_title }}</h2>
 
 			<div class="hr-products-text">
 				{{ result_subtitle | replace: "$query$", query | replace: "$totalResults$", products.totalResults | replace: "$contentType$", text_products }}
@@ -379,7 +379,7 @@
 			{% elsif initRender %}
 			<div class="hr-placeholder" data-loader="product">&nbsp;</div>
 			{% else %}
-			<h2 class='hr-products-header'>{{ text_products_title }}</h2>
+			<h2 class='hr-products-header'>{{ text_product_title }}</h2>
 
 			<div class="hr-products-text">
 				{{ result_subtitle | replace: "$query$", query | replace: "$totalResults$", products.totalResults | replace: "$contentType$", text_products }}
