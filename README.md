@@ -13,6 +13,7 @@ Overhauling search templates to reduce clutter, fix bugs and improve reusability
 - Add content links limit /w "Show more" button ⬜
 - Implement Andreas' sidebar filters for desktop search ⬜
 - Make filter count show by default. Add Liquid variable to control ✅
+- Some focus-related CSS that is specific to mobile search and should be cleaned up ⬜
 
 ### Mobile
 - Check header nav tab order ✅
@@ -23,4 +24,5 @@ Overhauling search templates to reduce clutter, fix bugs and improve reusability
 - Remove logo and move header buttons next to search input ⬜
 - Make price slider filter more appealing ✅
 - Make tabs more like arkenzoo.se (pills) ⬜ 
-- Related to above point, figure out what is going on with tabs being hidden incorrectly ⬜ 
+- Related to above point, figure out what is going on with tabs being hidden incorrectly ⬜
+- .hr-icon-arrow not being displayed (display: inline spans so height + width is not in effect) ⬜
