@@ -6,6 +6,7 @@ Overhauling search templates to reduce clutter, fix bugs and improve reusability
 - Capture product tile to avoid duplication? ✅
 - Add searchable filters ⬜
 - Make content hierarchies easily displayable ✅
+- Move the .hr-products-container to also be in the capture group before the product loop ⬜
 
 ### Desktop
 - Add "Your search matches X products" string when searching ✅
