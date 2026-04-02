@@ -26,3 +26,4 @@ Overhauling search templates to reduce clutter, fix bugs and improve reusability
 - Make tabs more like arkenzoo.se (pills) ⬜ 
 - Related to above point, figure out what is going on with tabs being hidden incorrectly ⬜
 - .hr-icon-arrow not being displayed (display: inline spans so height + width is not in effect) ⬜
+- Mobile filters are read twice using (at least some) screen readers. We can probably get rid of the label inside the .hr-search-overlay-filter-title ⬜
