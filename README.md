@@ -15,6 +15,7 @@ Overhauling search templates to reduce clutter, fix bugs and improve reusability
 - Implement Andreas' sidebar filters for desktop search ⬜
 - Make filter count show by default. Add Liquid variable to control ✅
 - Some focus-related CSS that is specific to mobile search and should be cleaned up ⬜
+- Remove duplicate styling of .hr-range-slider ⬜
 
 ### Mobile
 - Check header nav tab order ✅
