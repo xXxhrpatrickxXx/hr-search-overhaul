@@ -31,4 +31,4 @@ Overhauling search templates to reduce clutter, fix bugs and improve reusability
 - Mobile filters are read twice using (at least some) screen readers. We can probably get rid of the label inside the .hr-search-overlay-filter-title ⬜
 - .hr-overlay-search .hr-tabs .hr-tab-content --> height: 100%; ⬜
 - .hr-overlay-search .hr-search-overlay-grid-container .hr-search-overlay-product --> min-width: 0; ⬜
-- Move button.hr-filters to correct section of CSS + consolidate nav button styling where possible https://explain.helloretail.com/qGuWnKnl#comments ⬜
+- Move button.hr-filters to correct section of CSS and remove unnecessary styling + consolidate nav button styling where possible https://explain.helloretail.com/qGuWnKnl#comments ⬜
