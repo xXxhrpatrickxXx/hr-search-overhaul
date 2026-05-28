@@ -32,4 +32,5 @@ Overhauling search templates to reduce clutter, fix bugs and improve reusability
 - .hr-overlay-search .hr-tabs .hr-tab-content --> height: 100%; ⬜
 - .hr-overlay-search .hr-search-overlay-grid-container .hr-search-overlay-product --> min-width: 0; ⬜
 - Move button.hr-filters to correct section of CSS and remove unnecessary styling + consolidate nav button styling where possible https://explain.helloretail.com/qGuWnKnl#comments ⬜
-- Add specifity: .hr-products-container -> .hr-overlay-search .hr-products-container
+- Add specifity: .hr-products-container -> .hr-overlay-search .hr-products-container ⬜
+- Replace filter hide/show logic's query selector ".hr-header" to ".hr-nav" instead ⬜
