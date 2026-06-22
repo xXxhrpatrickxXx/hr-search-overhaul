@@ -7,6 +7,7 @@ Overhauling search templates to reduce clutter, fix bugs and improve reusability
 - Add searchable filters ⬜
 - Make content hierarchies easily displayable ✅
 - Move the .hr-products-container to also be in the capture group before the product loop ⬜
+- Make content title used in "no X found" lowercase. E.g. https://explain.helloretail.com/ApubOZAR ⬜
 
 ### Desktop
 - Add "Your search matches X products" string when searching ✅
