@@ -21,17 +21,17 @@ Overhauling search templates to reduce clutter, fix bugs and improve reusability
 ### Mobile
 - Check header nav tab order ✅
 - Add hierarchy filter icon to indicate if subcategories exist ✅
-- Switch background images to SVG for icons (header, island, filters) ⬜
-- Use currentColor for SVGs ⬜
+- Switch background images to SVG for icons (header, island, filters) ✅
+- Use currentColor for SVGs ✅
 - Neutral gray Liquid variable for content bubbles, "show results" button etc. ⬜
 - Remove logo and move header buttons next to search input ⬜
 - Make price slider filter more appealing ✅
 - Make tabs more like arkenzoo.se (pills) ⬜ 
 - Related to above point, figure out what is going on with tabs being hidden incorrectly ⬜
-- .hr-icon-arrow not being displayed (display: inline spans so height + width is not in effect) ⬜
+- .hr-icon-arrow not being displayed (display: inline spans so height + width is not in effect) ✅
 - Mobile filters are read twice using (at least some) screen readers. We can probably get rid of the label inside the .hr-search-overlay-filter-title ⬜
 - .hr-overlay-search .hr-tabs .hr-tab-content --> height: 100%; ⬜
 - .hr-overlay-search .hr-search-overlay-grid-container .hr-search-overlay-product --> min-width: 0; ⬜
 - Move button.hr-filters to correct section of CSS and remove unnecessary styling + consolidate nav button styling where possible https://explain.helloretail.com/qGuWnKnl#comments ⬜
 - Add specifity: .hr-products-container -> .hr-overlay-search .hr-products-container ⬜
-- Replace filter hide/show logic's query selector ".hr-header" to ".hr-nav" instead ⬜
+- Replace filter hide/show logic's query selector ".hr-header" to ".hr-nav" instead ✅
