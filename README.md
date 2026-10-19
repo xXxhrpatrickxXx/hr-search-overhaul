@@ -4,9 +4,9 @@ Overhauling search templates to reduce clutter, fix bugs and improve reusability
 
 ### General
 - Capture product tile to avoid duplication? ✅
-- Add searchable filters ⬜
+- Add searchable filters ✅
 - Make content hierarchies easily displayable ✅
-- Move the .hr-products-container to also be in the capture group before the product loop ⬜
+- Move the .hr-products-container to also be in the capture group before the product loop ✅
 - Make content title used in "no X found" lowercase. E.g. https://explain.helloretail.com/ApubOZAR ⬜
 
 ### Desktop
@@ -15,7 +15,7 @@ Overhauling search templates to reduce clutter, fix bugs and improve reusability
 - Add content links limit /w "Show more" button ⬜
 - Implement Andreas' sidebar filters for desktop search ⬜
 - Make filter count show by default. Add Liquid variable to control ✅
-- Some focus-related CSS that is specific to mobile search and should be cleaned up ⬜
+- Some focus-related CSS that is specific to mobile search and should be cleaned up ✅
 - Remove duplicate styling of .hr-range-slider ⬜
 
 ### Mobile
@@ -23,7 +23,7 @@ Overhauling search templates to reduce clutter, fix bugs and improve reusability
 - Add hierarchy filter icon to indicate if subcategories exist ✅
 - Switch background images to SVG for icons (header, island, filters) ✅
 - Use currentColor for SVGs ✅
-- Neutral gray Liquid variable for content bubbles, "show results" button etc. ⬜
+- Neutral gray Liquid variable for content bubbles, "show results" button etc. ✅
 - Remove logo and move header buttons next to search input ⬜
 - Make price slider filter more appealing ✅
 - Make tabs more like arkenzoo.se (pills) ⬜ 
